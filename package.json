@@ -21,6 +21,7 @@
     "@mdx-js/react": "^1.5.0",
     "algoliasearch": "^3.35.1",
     "amazon-product-api": "^0.4.4",
+    "buy": "^1.0.0",
     "emotion-theming": "^10.0.19",
     "es6-promise": "^4.2.8",
     "gatsby": "^2.13.50",
@@ -47,6 +48,7 @@
     "gatsby-source-contentful": "^2.1.76",
     "gatsby-source-filesystem": "^2.1.28",
     "gatsby-source-instagram": "^0.5.1",
+    "gatsby-source-shopify": "^3.0.41",
     "gatsby-source-stripe": "^3.0.4",
     "gatsby-transformer-sharp": "^2.2.19",
     "netlify-identity-widget": "^1.5.5",
@@ -73,6 +75,7 @@
     "react-typed": "^1.2.0",
     "reactjs-popup": "^1.5.0",
     "request": "^2.88.0",
+    "shopify": "^0.1.0",
     "slick-carousel": "^1.8.1",
     "theme-ui": "^0.2.43",
     "xml2js": "^0.4.23"
