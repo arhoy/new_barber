@@ -10,6 +10,7 @@ import Footer from './Footer';
 
 // real global scss styles
 import '../../scss/main.scss';
+import ContextProvider from '../../provider/ContextProvider';
 
 const theme = {
   colors: {
@@ -102,7 +103,7 @@ const Layout = ({ children, full }) => {
   const bodyColor = '#EAEDED';
 
   return (
-    <>
+    <ContextProvider>
       <Global
         styles={css`
           * {
@@ -113,7 +114,7 @@ const Layout = ({ children, full }) => {
           body {
             background: ${bodyColor};
             margin: 0;
-            font-family: Merienda, Cursive, Helvetica, Arial, sans-serif;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
           }
         `}
       />
@@ -143,7 +144,7 @@ const Layout = ({ children, full }) => {
           </FooterLayout>
         </ThemeProvider>
       )}
-    </>
+    </ContextProvider>
   );
 };
 Layout.propTypes = {

@@ -1,3 +1,4 @@
+// relates to snipcart
 import React from 'react';
 import styled from '@emotion/styled';
 import Layout from '../components/layouts/Layout';

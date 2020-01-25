@@ -10,10 +10,15 @@ exports.createPages = async ({ actions, graphql }) => {
           slug
         }
       }
+      allShopifyProduct {
+        nodes {
+          handle
+        }
+      }
     }
   `);
 
-  // creates pages Menu
+  // creates pages Menu via contentful!
   data.menuItems.nodes.forEach(item => {
     createPage({
       path: `menu/${item.slug}`,
@@ -23,13 +28,14 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  // creates pages for Simple Menu Template for reference
-  data.menuItems.nodes.forEach(item => {
+
+  // creates product pages via Shopify!
+  data.allShopifyProduct.nodes.forEach(item => {
     createPage({
-      path: `menu-test/${item.slug}`,
-      component: path.resolve('./src/templates/MenuItemSimpleTemplate.js'),
+      path: `product/${item.handle}`,
+      component: path.resolve('./src/templates/Shopify/ShopifyProductPage.js'),
       context: {
-        slug: item.slug,
+        handle: item.handle,
       },
     });
   });

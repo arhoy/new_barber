@@ -1,7 +1,7 @@
 {
-  "name": "smallbusinesstemplate",
-  "private": true,
-  "description": "Official repo for template for small site with contentful",
+  "name": "aquasarcafe",
+  "private": false,
+  "description": "Aquasar Cafe / Template w. Shopify",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -21,7 +21,6 @@
     "@mdx-js/react": "^1.5.0",
     "algoliasearch": "^3.35.1",
     "amazon-product-api": "^0.4.4",
-    "buy": "^1.0.0",
     "emotion-theming": "^10.0.19",
     "es6-promise": "^4.2.8",
     "gatsby": "^2.13.50",
@@ -51,6 +50,7 @@
     "gatsby-source-shopify": "^3.0.41",
     "gatsby-source-stripe": "^3.0.4",
     "gatsby-transformer-sharp": "^2.2.19",
+    "lodash": "^4.17.15",
     "netlify-identity-widget": "^1.5.5",
     "node-sass": "^4.12.0",
     "react": "^16.10.1",
@@ -75,7 +75,7 @@
     "react-typed": "^1.2.0",
     "reactjs-popup": "^1.5.0",
     "request": "^2.88.0",
-    "shopify": "^0.1.0",
+    "shopify-buy": "^2.9.0",
     "slick-carousel": "^1.8.1",
     "theme-ui": "^0.2.43",
     "xml2js": "^0.4.23"
@@ -87,6 +87,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arhoy/CameroonStreetFood.com"
+    "url": "https://github.com/arhoy/aquasarcafe"
   }
 }
