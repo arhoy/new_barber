@@ -11,6 +11,7 @@ import Footer from './Footer';
 // real global scss styles
 import '../../scss/main.scss';
 import ContextProvider from '../../provider/ContextProvider';
+import NavShopify from '../navigation/navShopify/NavShopify';
 
 const theme = {
   colors: {
@@ -124,6 +125,7 @@ const Layout = ({ children, full }) => {
           <Div>
             <FullNavLayout>
               <Nav />
+              <NavShopify />
             </FullNavLayout>
             <MainFull>{children}</MainFull>
             <FullFooterLayout>

@@ -5,7 +5,6 @@ import GetAllShopifyProductsHook from '../hooks/shopify/getAllShopifyProductsHoo
 import { Section } from '../components/reusableStyles/sections/Sections';
 import { H1, P } from '../components/reusableStyles/typography/Typography';
 
-import ShopifyCart from '../components/shopify/cart/ShopifyCart';
 import ProductGrid from '../components/shopify/productGrid/ProductGrid';
 
 const CafePage = () => {
@@ -17,7 +16,6 @@ const CafePage = () => {
         <H1>Our Cafe Shop</H1>
         <P>Rendered with Shopify!</P>
         <ProductGrid />
-        <ShopifyCart />
       </Section>
     </Layout>
   );

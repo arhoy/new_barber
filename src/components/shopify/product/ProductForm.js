@@ -3,6 +3,7 @@ import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import StoreContext from '../../../context/StoreContext';
+import { MenuLink } from '../../navigation/navShopify/styles';
 
 const ProductForm = ({ product }) => {
   const {
@@ -133,6 +134,8 @@ const ProductForm = ({ product }) => {
       >
         Add to Cart
       </button>
+
+      <MenuLink to="/cart">View Cart</MenuLink>
       {!available && <p>This Product is out of Stock!</p>}
     </>
   );
