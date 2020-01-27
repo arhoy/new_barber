@@ -39,6 +39,8 @@ const StyledImage2 = styled(Image)`
 const ImageSlider = styled.div`
   position: relative;
 
+  outline: none;
+  border: none;
   width: 100%;
   height: 50rem;
   overflow: hidden;

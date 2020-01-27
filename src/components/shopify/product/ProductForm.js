@@ -117,27 +117,34 @@ const ProductForm = ({ product }) => {
   return (
     <Container>
       <PriceContainer>{price}</PriceContainer>
+
       {options.length > 0 &&
-        options.map(({ id, name, values }, index) => (
-          <Option key={id}>
-            <label htmlFor={name}> {name} </label>
-            <select
-              name={name}
-              key={id}
-              onBlur={event => handleOptionChange(index, event)}
-            >
-              {values.map(value => (
-                <option
-                  value={value}
-                  key={`${name}-${value}`}
-                  disabled={checkDisabled(name, value)}
+        options.map(({ id, name, values }, index) => {
+          if (name === 'Title') {
+            return null;
+          } else {
+            return (
+              <Option key={id}>
+                <label htmlFor={name}> {name} </label>
+                <select
+                  name={name}
+                  key={id}
+                  onBlur={event => handleOptionChange(index, event)}
                 >
-                  {value}
-                </option>
-              ))}
-            </select>
-          </Option>
-        ))}
+                  {values.map(value => (
+                    <option
+                      value={value}
+                      key={`${name}-${value}`}
+                      disabled={checkDisabled(name, value)}
+                    >
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </Option>
+            );
+          }
+        })}
       <label htmlFor="quantity">Quantity </label>
       <input
         type="number"

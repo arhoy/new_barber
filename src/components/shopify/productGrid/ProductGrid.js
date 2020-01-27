@@ -11,9 +11,14 @@ const Grid = styled.div`
   display: grid;
 
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Product = styled.div`
+  padding: 1rem;
+  margin: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,6 +38,9 @@ const PriceTag = styled.span`
   text-align: center;
   margin-top: 1rem;
   color: ${props => props.theme.colors.primaryDark};
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    font-size: 2.1rem;
+  }
 `;
 
 const Img = styled(Image)`
@@ -78,7 +86,7 @@ const ProductGrid = () => {
 
   const getPrice = price =>
     Intl.NumberFormat(undefined, {
-      currency: checkout.currencyCode ? checkout.currencyCode : 'EUR',
+      currency: checkout.currencyCode ? checkout.currencyCode : 'CDN',
       minimumFractionDigits: 2,
       style: 'currency',
     }).format(parseFloat(price ? price : 0));

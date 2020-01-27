@@ -5,7 +5,7 @@ require('dotenv').config({
 // Define site URL here
 let URL;
 if (process.env.NODE_ENV === 'production') {
-  URL = 'https://ripplejs.com';
+  URL = 'https://aquasarcafe.netlify.com/';
 } else {
   URL = 'http://localhost:8000';
 }
@@ -14,8 +14,8 @@ const queries = require('./src/utils/algolia');
 
 module.exports = {
   siteMetadata: {
-    title: 'Cameroon Food Invite',
-    description: 'Cameroon Food Invite, Authentic Cameroon Cuisine in Edmonton',
+    title: 'Aquasar Cafe',
+    description: 'Aquasar Cafe - Modern Coffee House in Central Edmonton',
     author: 'Alex Quasar',
     twitterUsername: '@_aquasar',
     image: '/default.png',

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Image from 'gatsby-image';
+import { graphql } from 'gatsby';
 
 import { FaPlus } from 'react-icons/fa';
 import Slider from 'react-slick';
@@ -54,15 +55,35 @@ const Container = styled.div`
 `;
 
 const SubContainer1 = styled.div`
+  outline: none;
   grid-column: 1/2;
-  margin: 1rem auto;
-  width: 40vw;
+  margin: auto;
+
+  min-width: 30rem;
+  max-width: 40vw;
+  min-height: 30rem;
+  max-height: auto;
+
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    width: 80vw;
+    max-width: 80vw;
+    min-width: 70vw;
+    min-height: 10rem;
+    max-height: auto;
+  }
+  @media (max-width: ${props => props.theme.screenSize.mobileS}) {
+    max-width: 80vw;
+    min-width: 70vw;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
 const SubContainer2 = styled.div``;
+
+const CustomImage = styled(Image)`
+  outline: none;
+`;
 
 const ShopifyProductPage = ({ data }) => {
   const product = data.shopifyProduct;
@@ -82,6 +103,14 @@ const ShopifyProductPage = ({ data }) => {
     pauseOnHover: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          dots: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -104,7 +133,9 @@ const ShopifyProductPage = ({ data }) => {
               <Slider {...settings}>
                 {product.images.map((image, i) => (
                   <ImageSlider modal onClick={e => handleImageClick(i)} key={i}>
-                    <Image fluid={image.localFile.childImageSharp.fluid} />
+                    <CustomImage
+                      fluid={image.localFile.childImageSharp.fluid}
+                    />
                     <span className="zoom">
                       <FaPlus />
                     </span>
