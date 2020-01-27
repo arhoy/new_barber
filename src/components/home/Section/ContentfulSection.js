@@ -121,7 +121,7 @@ export const HomeSection = ({ data }) => {
           {documentToReactComponents(json, options)}
 
           <ButtonStyle2>
-            <NoStyleLink to="/contact">Contact</NoStyleLink>
+            <NoStyleLink to="/cafe">Shop Now</NoStyleLink>
           </ButtonStyle2>
         </BlurbContainer>
       </CustomContainerReverse>
@@ -136,7 +136,7 @@ export const HomeSection = ({ data }) => {
         {documentToReactComponents(json, options)}
 
         <ButtonStyle2>
-          <NoStyleLink to="/contact">Contact</NoStyleLink>
+          <NoStyleLink to="/cafe">Show Now</NoStyleLink>
         </ButtonStyle2>
       </BlurbContainer>
       <ImageContainerSlider>

@@ -51,7 +51,7 @@ const HomeInfo = () => {
         <CustomPHome>Flavour: Dark Roast / Bitter / Bold </CustomPHome>
 
         <ButtonStyle2>
-          <NoStyleLink to="/contact">Get Details</NoStyleLink>
+          <NoStyleLink to="/cafe">Try Now</NoStyleLink>
         </ButtonStyle2>
       </BlurbContainer>
     </Container>

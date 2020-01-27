@@ -21,7 +21,7 @@ import { ButtonStyle2Large } from '../components/reusableStyles/buttons/Button';
 import AboutUs from '../components/home/AboutUs';
 import AboutOurFood from '../components/home/AboutOurFood';
 import Catering from '../components/home/Catering';
-import Contact from '../components/home/Contact';
+
 import HomeInfo from '../components/home/HomeInfo';
 import HomeAmmenties from '../components/home/HomeAmmenities';
 
@@ -216,19 +216,17 @@ const Home = ({ data }) => {
           <HomeGallery />
         </Container1200>
       </SectionGrey>
+
       <Section>
-        <Contact />
-      </Section>
-      <SectionGrey>
         <Container1200>
           <Map1
             title={`Our Locations`}
-            mapStyle="mapbox://styles/arhoy/ck5n2qqyf0i0v1inwxwapkl7c"
+            mapStyle="mapbox://styles/arhoy/ck5w4r15h22j21iqlfx08pytp"
             width="100%"
             height="50vh"
           />
         </Container1200>
-      </SectionGrey>
+      </Section>
     </Layout>
   );
 };

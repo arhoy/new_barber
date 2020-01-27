@@ -4,7 +4,8 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import storeLocations from './data/fashionStoreCoordinates';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { SimpleAlertPrimary } from '../reusableStyles/alerts/SimpleAlerts';
-import { Bold, P, H2 } from '../reusableStyles/typography/Typography';
+import { Bold, P } from '../reusableStyles/typography/Typography';
+import { CustomH2 } from '../home/HomeStyling';
 
 const Icon = styled(FaMapMarkerAlt)`
   color: ${props => props.theme.colors.primary};
@@ -35,7 +36,7 @@ const Map1 = ({ title, mapStyle, height, width }) => {
     <div>
       {title && (
         <>
-          <H2>{title}</H2>
+          <CustomH2>{title}</CustomH2>
           <P> {selected ? `${selected.name}` : `Select Location`}</P>
         </>
       )}
