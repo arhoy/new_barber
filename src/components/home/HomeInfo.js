@@ -16,7 +16,7 @@ import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 const HomeInfo = () => {
   const { image } = useStaticQuery(graphql`
     query {
-      image: file(relativePath: { eq: "about.jpg" }) {
+      image: file(relativePath: { eq: "about2.jpg" }) {
         sharp: childImageSharp {
           fluid(maxWidth: 1000) {
             ...GatsbyImageSharpFluid_withWebp

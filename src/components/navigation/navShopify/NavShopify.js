@@ -35,7 +35,7 @@ const NavShopify = () => {
         <p className="desktop">Free Shipping On Orders Over $100</p>
         <p className="mobile">Free Shipping $100+</p>
       </Promo>
-      <ShopifyCartButton />
+      <ShopifyCartButton text1={`CART`} text2={`Empty Cart`} />
     </Container>
   );
 };

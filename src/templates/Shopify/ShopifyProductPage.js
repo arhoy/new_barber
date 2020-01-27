@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Image from 'gatsby-image';
+
 import { FaPlus } from 'react-icons/fa';
 import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
-
-import { graphql } from 'gatsby';
 
 import ProductForm from '../../components/shopify/product/ProductForm';
 import { Section } from '../../components/reusableStyles/sections/Sections';
@@ -13,11 +12,24 @@ import Layout from '../../components/layouts/Layout';
 import { H2 } from '../../components/reusableStyles/typography/Typography';
 import {
   ImageSlider,
-  StyledImage2,
   ImageContainerSlider2,
 } from '../../components/home/HomeStyling';
 
-const ProductTitle = styled(H2)``;
+const ProductTitle = styled(H2)`
+  &.mobile {
+    margin-bottom: 3rem;
+  }
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    &.desktop {
+      display: none;
+    }
+  }
+  @media (min-width: ${props => props.theme.screenSize.mobileL}) {
+    &.mobile {
+      display: none;
+    }
+  }
+`;
 
 const ProductDescriptionContainer = styled.div`
   margin-top: 3rem;
@@ -32,11 +44,6 @@ const ProductDescription = styled.div`
   font-weight: 300;
 `;
 
-const Img = styled(Image)`
-  max-width: 50rem;
-  margin: 0 auto;
-`;
-
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -46,7 +53,16 @@ const Container = styled.div`
   }
 `;
 
-const SubContainer = styled.div``;
+const SubContainer1 = styled.div`
+  grid-column: 1/2;
+  margin: 1rem auto;
+  width: 40vw;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    width: 80vw;
+  }
+`;
+
+const SubContainer2 = styled.div``;
 
 const ShopifyProductPage = ({ data }) => {
   const product = data.shopifyProduct;
@@ -56,7 +72,6 @@ const ShopifyProductPage = ({ data }) => {
     setModal(prev => !prev);
     setImageNumber(i);
   };
-
   const settings = {
     dots: true,
     infinite: true,
@@ -71,33 +86,35 @@ const ShopifyProductPage = ({ data }) => {
 
   return (
     <Layout>
+      {modal && (
+        <Lightbox
+          mainSrc={
+            product.images[imageNumber].localFile.childImageSharp.fluid.src
+          }
+          onCloseRequest={e => handleImageClick(0)}
+        >
+          Due
+        </Lightbox>
+      )}
       <Section>
         <Container>
-          <SubContainer>
-            {/* {product.images.map(image => (
-              <Img
-                fluid={image.localFile.childImageSharp.fluid}
-                key={image.id}
-                alt={product.title}
-              />
-            ))} */}
-
+          <SubContainer1>
+            <ProductTitle className="mobile">{product.title}</ProductTitle>
             <ImageContainerSlider2>
               <Slider {...settings}>
                 {product.images.map((image, i) => (
-                  <div>
-                    <Img
-                      fluid={image.localFile.childImageSharp.fluid}
-                      key={image.id}
-                      alt={product.title}
-                    />
-                  </div>
+                  <ImageSlider modal onClick={e => handleImageClick(i)} key={i}>
+                    <Image fluid={image.localFile.childImageSharp.fluid} />
+                    <span className="zoom">
+                      <FaPlus />
+                    </span>
+                  </ImageSlider>
                 ))}
               </Slider>
             </ImageContainerSlider2>
-          </SubContainer>
-          <SubContainer>
-            <ProductTitle>{product.title}</ProductTitle>
+          </SubContainer1>
+          <SubContainer2>
+            <ProductTitle className="desktop">{product.title}</ProductTitle>
             <ProductDescriptionContainer>
               <h4> Description and Features </h4>
               <ProductDescription
@@ -106,7 +123,7 @@ const ShopifyProductPage = ({ data }) => {
             </ProductDescriptionContainer>
 
             <ProductForm product={product} />
-          </SubContainer>
+          </SubContainer2>
         </Container>
       </Section>
     </Layout>

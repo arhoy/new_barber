@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 
 import ReactImageMagnify from 'react-image-magnify';
 
-const SimpleSlider = ({ images }) => {
+const RRCWithZoom = ({ images }) => {
   const [index, setIndex] = useState(0);
 
   const length = images.length - 1;
@@ -56,4 +56,4 @@ const SimpleSlider = ({ images }) => {
   );
 };
 
-export default SimpleSlider;
+export default RRCWithZoom;

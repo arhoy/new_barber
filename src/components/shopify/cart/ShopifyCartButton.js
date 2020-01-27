@@ -34,8 +34,8 @@ const StyledCart = styled(FaShoppingCart)`
 const CheckoutButton = styled(ButtonStyle2)`
   outline: none;
   margin: 0 0.5rem;
-  font-size: 1.5rem;
-  text-transform: uppercase;
+  font-size: 1.4rem;
+
   border: none;
   padding: 0.5rem 0.8rem;
   color: ${props => props.theme.colors.white};
@@ -74,7 +74,7 @@ const useQuantity = () => {
   return [total !== 0, total];
 };
 
-export const ShopifyCartButton = () => {
+export const ShopifyCartButton = ({ text1, text2 }) => {
   const [hasItems, quantity] = useQuantity();
 
   return (
@@ -85,10 +85,10 @@ export const ShopifyCartButton = () => {
       </CartCounterDiv>
       {hasItems ? (
         <CheckoutButton>
-          <NoStyleLink to="/cart">CART</NoStyleLink>
+          <NoStyleLink to="/cart">{text1}</NoStyleLink>
         </CheckoutButton>
       ) : (
-        <CheckoutButton disabled={true}>CART Empty</CheckoutButton>
+        <CheckoutButton disabled={true}>{text2}</CheckoutButton>
       )}
     </SubContainer>
   );

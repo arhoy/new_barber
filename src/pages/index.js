@@ -27,6 +27,7 @@ import HomeAmmenties from '../components/home/HomeAmmenities';
 
 import HomeReview from '../components/home/HomeReview';
 import HomeGallery from '../components/home/HomeGallery';
+import Map1 from '../components/mapbox/Map1';
 
 const fadeInDown = keyframes`
 from {
@@ -218,6 +219,16 @@ const Home = ({ data }) => {
       <Section>
         <Contact />
       </Section>
+      <SectionGrey>
+        <Container1200>
+          <Map1
+            title={`Our Locations`}
+            mapStyle="mapbox://styles/arhoy/ck5n2qqyf0i0v1inwxwapkl7c"
+            width="100%"
+            height="50vh"
+          />
+        </Container1200>
+      </SectionGrey>
     </Layout>
   );
 };

@@ -158,7 +158,7 @@ const ProductForm = ({ product }) => {
         Add to Cart
       </ButtonStyle2>
 
-      <ShopifyCartButton />
+      <ShopifyCartButton text1={`CheckOut`} text2={`Cart`} />
       {!available && <p>This Product is out of Stock!</p>}
     </Container>
   );
