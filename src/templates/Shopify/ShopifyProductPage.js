@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Image from 'gatsby-image';
+import { FaPlus } from 'react-icons/fa';
+import Slider from 'react-slick';
+import Lightbox from 'react-image-lightbox';
 
 import { graphql } from 'gatsby';
 
@@ -8,6 +11,11 @@ import ProductForm from '../../components/shopify/product/ProductForm';
 import { Section } from '../../components/reusableStyles/sections/Sections';
 import Layout from '../../components/layouts/Layout';
 import { H2 } from '../../components/reusableStyles/typography/Typography';
+import {
+  ImageSlider,
+  StyledImage2,
+  ImageContainerSlider2,
+} from '../../components/home/HomeStyling';
 
 const ProductTitle = styled(H2)``;
 
@@ -42,18 +50,51 @@ const SubContainer = styled.div``;
 
 const ShopifyProductPage = ({ data }) => {
   const product = data.shopifyProduct;
+  const [modal, setModal] = useState(false);
+  const [imageNumber, setImageNumber] = useState(0);
+  const handleImageClick = i => {
+    setModal(prev => !prev);
+    setImageNumber(i);
+  };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    autoplaySpeed: 5000,
+    fadeIn: false,
+    autoplay: true,
+    pauseOnHover: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <Layout>
       <Section>
         <Container>
           <SubContainer>
-            {product.images.map(image => (
+            {/* {product.images.map(image => (
               <Img
                 fluid={image.localFile.childImageSharp.fluid}
                 key={image.id}
                 alt={product.title}
               />
-            ))}
+            ))} */}
+
+            <ImageContainerSlider2>
+              <Slider {...settings}>
+                {product.images.map((image, i) => (
+                  <div>
+                    <Img
+                      fluid={image.localFile.childImageSharp.fluid}
+                      key={image.id}
+                      alt={product.title}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </ImageContainerSlider2>
           </SubContainer>
           <SubContainer>
             <ProductTitle>{product.title}</ProductTitle>

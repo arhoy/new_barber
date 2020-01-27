@@ -11,7 +11,6 @@ import {
 import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
 
-// This only needs to be imported once in your app
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'react-image-lightbox/style.css';
