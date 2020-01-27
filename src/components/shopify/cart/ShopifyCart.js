@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import StoreContext from '../../../context/StoreContext';
 import { ButtonStyle2Large } from '../../reusableStyles/buttons/Button';
-import LineItem from './lineItem/lineItem';
+import LineItem from './lineItem/LineItem';
 
 const ShopifyCart = () => {
   const {
