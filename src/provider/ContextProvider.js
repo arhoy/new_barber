@@ -21,6 +21,7 @@ const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const initializeCheckout = async () => {
+      console.log('THIS IS THE SHOPNAME', process.env.SHOP_NAME);
       // Check for an existing cart.
       const isBrowser = typeof window !== 'undefined';
       const existingCheckoutID = isBrowser
