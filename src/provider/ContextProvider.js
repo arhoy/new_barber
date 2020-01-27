@@ -4,7 +4,7 @@ import Client from 'shopify-buy';
 import Context from '../context/StoreContext';
 
 const client = Client.buildClient({
-  storefrontAccessToken: `2b507eb5b8851fb146794eb35cbe662f`,
+  storefrontAccessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESSS_TOKEN,
   domain: `aquasar-cafe-shop.myshopify.com`,
 });
 
@@ -21,7 +21,6 @@ const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const initializeCheckout = async () => {
-      console.log('THIS IS THE SHOPNAME', process.env.SHOP_NAME);
       // Check for an existing cart.
       const isBrowser = typeof window !== 'undefined';
       const existingCheckoutID = isBrowser

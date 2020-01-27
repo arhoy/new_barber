@@ -27,7 +27,7 @@ const ShopifyCart = () => {
       <br />
       <h2>Total</h2>
       <p>$ {checkout.totalPrice}</p>
-      {/* <pre>{JSON.stringify(checkout.lineItems, null, 2)}</pre> */}
+
       <br />
       <ButtonStyle2Large
         onClick={handleCheckout}
