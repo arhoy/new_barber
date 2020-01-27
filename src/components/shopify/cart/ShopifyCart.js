@@ -15,10 +15,9 @@ const ShopifyCart = () => {
   const line_items = checkout.lineItems.map(line_item => {
     return <LineItem key={line_item.id.toString()} line_item={line_item} />;
   });
-  console.log('WHAT IS THIS', checkout);
+
   return (
     <div>
-      This is a ShopifyCart!
       {line_items}
       <h2>Subtotal</h2>
       <p>$ {checkout.subtotalPrice}</p>
@@ -30,7 +29,12 @@ const ShopifyCart = () => {
       <p>$ {checkout.totalPrice}</p>
       {/* <pre>{JSON.stringify(checkout.lineItems, null, 2)}</pre> */}
       <br />
-      <ButtonStyle2Large onClick={handleCheckout}> Check Out</ButtonStyle2Large>
+      <ButtonStyle2Large
+        onClick={handleCheckout}
+        disabled={checkout.lineItems.length === 0}
+      >
+        Check Out
+      </ButtonStyle2Large>
     </div>
   );
 };

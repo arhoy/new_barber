@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'gatsby-image';
 import { PBasic, H2 } from '../reusableStyles/typography/Typography';
+import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 
 const Container = styled.div`
   padding: 4rem 0;
@@ -15,14 +16,6 @@ const Container = styled.div`
   }
 `;
 
-const ImageContainer = styled.div``;
-
-const ImageContainerSlider = styled.div`
-  max-width: 50rem;
-`;
-
-const BlurbContainer = styled.div``;
-
 const StyledImage = styled(Image)`
   min-width: 35rem;
   max-width: 45rem;
@@ -33,6 +26,68 @@ const StyledImage = styled(Image)`
     width: 100%;
   }
 `;
+
+const StyledImage2 = styled(Image)`
+  width: 100%;
+  height: 100%;
+
+  background-position: center;
+  background-size: cover;
+  transition: all 0.3s ease-in;
+`;
+
+const ImageSlider = styled.div`
+  position: relative;
+
+  width: 100%;
+  height: 50rem;
+  overflow: hidden;
+
+  &:hover {
+    ${StyledImage2} {
+      filter: brightness(50%);
+      transform: scale(1.1);
+    }
+    & .zoom {
+      opacity: 0.8;
+      transition: all 0.5s ease-in;
+      transform: scale(1);
+    }
+  }
+  & .zoom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 5rem;
+    height: 5rem;
+    background: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.white};
+  }
+
+  @media (max-width: ${props => props.theme.screenSize.eightHundred}) {
+    height: 40rem;
+  }
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    height: 30rem;
+  }
+`;
+
+const ImageContainer = styled.div``;
+
+const ImageContainerSlider = styled.div`
+  max-width: 50rem;
+`;
+
+const ImageContainerSlider2 = styled.div`
+  width: 100%;
+`;
+
+const BlurbContainer = styled.div``;
 
 const CustomP = styled(PBasic)`
   font-family: Merienda;
@@ -52,13 +107,27 @@ const CustomH2 = styled(H2)`
   font-size: 4rem;
 `;
 
+const CustomH2Centered = styled(CustomH2)`
+  text-align: center;
+`;
+
+const CustomButton = styled(ButtonStyle2)`
+  border-radius: 0;
+  padding: 1.5rem 3rem;
+`;
+
 export {
   Container,
   ImageContainer,
   ImageContainerSlider,
+  ImageContainerSlider2,
   BlurbContainer,
   StyledImage,
+  ImageSlider,
+  StyledImage2,
   CustomP,
   CustomH2,
+  CustomH2Centered,
   CustomPHome,
+  CustomButton,
 };

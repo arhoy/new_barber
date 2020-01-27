@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-
+import { keyframes } from '@emotion/core';
 import { graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 
@@ -11,16 +11,36 @@ import Layout from '../components/layouts/Layout';
 import {
   Section,
   SectionGrey,
+  Container1200,
 } from '../components/reusableStyles/sections/Sections';
 
-import AboutUs from '../components/home/AboutUs';
-
-import Catering from '../components/home/Catering';
-import Contact from '../components/home/Contact';
 import Slider from 'react-slick';
 import SliderContainer2 from '../components/reusableStyles/slider/SliderContainer2';
-
+import { H1 } from '../components/reusableStyles/typography/Typography';
+import { ButtonStyle2Large } from '../components/reusableStyles/buttons/Button';
+import AboutUs from '../components/home/AboutUs';
 import AboutOurFood from '../components/home/AboutOurFood';
+import Catering from '../components/home/Catering';
+import Contact from '../components/home/Contact';
+import HomeInfo from '../components/home/HomeInfo';
+import HomeAmmenties from '../components/home/HomeAmmenities';
+
+import HomeReview from '../components/home/HomeReview';
+import HomeGallery from '../components/home/HomeGallery';
+
+const fadeInDown = keyframes`
+from {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+
+to {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+`;
 
 const HerosContainer = styled.div`
   z-index: -1;
@@ -34,11 +54,11 @@ const HerosContainer = styled.div`
 
 const HeroBackgroundImage = styled(BackgroundImage)`
   width: 100%;
-  height: 92vh;
+  height: 88vh;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0)
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.3)
   );
   background-size: cover;
   background-position: top;
@@ -66,6 +86,10 @@ const HeroContentContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 const HeroContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: ${props => props.theme.colors.white};
   max-width: 80rem;
   margin: 0 auto;
@@ -73,6 +97,35 @@ const HeroContent = styled.div`
   padding: 3rem;
   border-top-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
+  & ${H1} {
+    color: ${props => props.theme.colors.white};
+    font-weight: 100;
+    font-size: 6rem;
+    animation: ${fadeInDown} 0.4s;
+ ;
+      (max-width: ${props => props.theme.screenSize.mobileL}) {
+      font-size: 4rem;
+    }
+  }
+  & span {
+    font-weight: 500;
+    padding: 2rem 0;
+    animation: ${fadeInDown} 0.3s;
+    animation-fill-mode: both;
+    animation-delay: .7s;
+    @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+      display: none;
+    }
+  }
+  & ${ButtonStyle2Large} {
+   
+    animation: ${fadeInDown} 0.2s;
+    animation-fill-mode: both;
+    animation-delay: 1s;
+    border-radius: 0;
+    font-size: 1.8rem;
+    font-weight: 100;
+  }
 `;
 
 export const query = graphql`
@@ -123,7 +176,12 @@ const Home = ({ data }) => {
           <HerosContainer>
             <HeroBackgroundImage fluid={data.heroImage.childImageSharp.fluid}>
               <HeroContentContainer>
-                <HeroContent></HeroContent>
+                <HeroContent>
+                  <H1>Modern Coffee House</H1>
+                  <span>
+                    Brewing Passion in Edmonton's Brewery District since 1929
+                  </span>
+                </HeroContent>
               </HeroContentContainer>
             </HeroBackgroundImage>
           </HerosContainer>
@@ -138,6 +196,24 @@ const Home = ({ data }) => {
       </Section>
       <SectionGrey>
         <Catering />
+      </SectionGrey>
+      <Section>
+        <HomeInfo />
+      </Section>
+      <SectionGrey>
+        <Container1200>
+          <HomeAmmenties />
+        </Container1200>
+      </SectionGrey>
+      <Section>
+        <Container1200>
+          <HomeReview />
+        </Container1200>
+      </Section>
+      <SectionGrey>
+        <Container1200>
+          <HomeGallery />
+        </Container1200>
       </SectionGrey>
       <Section>
         <Contact />

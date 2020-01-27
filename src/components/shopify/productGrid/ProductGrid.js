@@ -1,8 +1,45 @@
 import React, { useContext } from 'react';
+import styled from '@emotion/styled';
+import Image from 'gatsby-image';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
-import { Grid, Product, Title, PriceTag, Img } from './styles';
 import StoreContext from '../../../context/StoreContext';
+
+const Grid = styled.div`
+  margin: 4rem 2rem;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+`;
+
+const Product = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+`;
+
+const Title = styled.span`
+  font-weight: 100;
+  font-size: 1.4rem;
+  text-align: center;
+`;
+
+const PriceTag = styled.span`
+  font-weight: 300;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: ${props => props.theme.colors.primaryDark};
+`;
+
+const Img = styled(Image)`
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+`;
 
 const ProductGrid = () => {
   const {

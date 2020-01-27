@@ -1,7 +1,16 @@
 import React, { useContext } from 'react';
+import styled from '@emotion/styled';
 
-import { Wrapper } from './styles';
 import StoreContext from '../../../../context/StoreContext';
+import { ButtonStyle2 } from '../../../reusableStyles/buttons/Button';
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2rem 0 2rem 0;
+`;
 
 const LineItem = props => {
   const { line_item } = props;
@@ -40,7 +49,7 @@ const LineItem = props => {
       </p>
       {selectedOptions}
       {line_item.quantity}
-      <button onClick={handleRemove}>Remove</button>
+      <ButtonStyle2 onClick={handleRemove}>Remove</ButtonStyle2>
     </Wrapper>
   );
 };

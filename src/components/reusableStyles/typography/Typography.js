@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const H1 = styled.h1`
   font-size: 5rem;
-  font-family: 'Parisienne', cursive;
+  font-family: 'Merienda', cursive;
   text-align: center;
   color: ${props => props.theme.colors.primary};
   text-shadow: -3px 3px 0 rgba(10, 14, 39, 0.1);

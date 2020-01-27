@@ -32,6 +32,10 @@ const ButtonStyle2 = styled.button`
     color: ${props => props.theme.colors.white};
     text-decoration: none;
   }
+  &:disabled {
+    background: ${props => props.theme.colors.lightgrey};
+    cursor: not-allowed;
+  }
 `;
 
 const ButtonStyle3 = styled.button`

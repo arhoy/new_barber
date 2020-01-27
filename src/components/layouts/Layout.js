@@ -124,8 +124,8 @@ const Layout = ({ children, full }) => {
         <ThemeProvider theme={theme}>
           <Div>
             <FullNavLayout>
-              <Nav />
               <NavShopify />
+              <Nav />
             </FullNavLayout>
             <MainFull>{children}</MainFull>
             <FullFooterLayout>
@@ -136,6 +136,7 @@ const Layout = ({ children, full }) => {
       ) : (
         <ThemeProvider theme={theme}>
           <NavLayout>
+            <NavShopify />
             <Nav />
           </NavLayout>
           <DivFixed>

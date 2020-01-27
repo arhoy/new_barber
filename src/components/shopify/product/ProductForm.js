@@ -1,9 +1,39 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
+import styled from '@emotion/styled';
 import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import StoreContext from '../../../context/StoreContext';
-import { MenuLink } from '../../navigation/navShopify/styles';
+
+import { ButtonStyle2 } from '../../reusableStyles/buttons/Button';
+import { ShopifyCartButton } from '../cart/ShopifyCartButton';
+
+const Container = styled.div`
+  padding: 2rem 0;
+
+  & input,
+  select {
+    padding: 0.5rem;
+    width: 10rem;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+  }
+  & label {
+    display: flex;
+    width: 10rem;
+    margin-bottom: 3px;
+  }
+`;
+
+const Option = styled.div`
+  margin: 1rem 0;
+`;
+
+const PriceContainer = styled.div`
+  font-size: 3rem;
+  color: ${props => props.theme.colors.primaryDark};
+`;
 
 const ProductForm = ({ product }) => {
   const {
@@ -64,15 +94,6 @@ const ProductForm = ({ product }) => {
     addVariantToCart(productVariant.shopifyId, quantity);
   };
 
-  /* 
-  Using this in conjunction with a select input for variants 
-  can cause a bug where the buy button is disabled, this 
-  happens when only one variant is available and it's not the
-  first one in the dropdown list. I didn't feel like putting 
-  in time to fix this since its an edge case and most people
-  wouldn't want to use dropdown styled selector anyways - 
-  at least if the have a sense for good design lol.
-  */
   const checkDisabled = (name, value) => {
     const match = find(variants, {
       selectedOptions: [
@@ -92,30 +113,31 @@ const ProductForm = ({ product }) => {
     minimumFractionDigits: 2,
     style: 'currency',
   }).format(variant.price);
-
+  console.log(options);
   return (
-    <>
-      {options.map(({ id, name, values }, index) => (
-        <React.Fragment key={id}>
-          <label htmlFor={name}>{name} </label>
-          <select
-            name={name}
-            key={id}
-            onChange={event => handleOptionChange(index, event)}
-          >
-            {values.map(value => (
-              <option
-                value={value}
-                key={`${name}-${value}`}
-                disabled={checkDisabled(name, value)}
-              >
-                {value}
-              </option>
-            ))}
-          </select>
-          <br />
-        </React.Fragment>
-      ))}
+    <Container>
+      <PriceContainer>{price}</PriceContainer>
+      {options.length > 0 &&
+        options.map(({ id, name, values }, index) => (
+          <Option key={id}>
+            <label htmlFor={name}> {name} </label>
+            <select
+              name={name}
+              key={id}
+              onBlur={event => handleOptionChange(index, event)}
+            >
+              {values.map(value => (
+                <option
+                  value={value}
+                  key={`${name}-${value}`}
+                  disabled={checkDisabled(name, value)}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
+          </Option>
+        ))}
       <label htmlFor="quantity">Quantity </label>
       <input
         type="number"
@@ -126,18 +148,19 @@ const ProductForm = ({ product }) => {
         onChange={handleQuantityChange}
         value={quantity}
       />
-      <br />
-      <button
+
+      <ButtonStyle2
         type="submit"
         disabled={!available || adding}
         onClick={handleAddToCart}
+        style={{ display: 'block' }}
       >
         Add to Cart
-      </button>
+      </ButtonStyle2>
 
-      <MenuLink to="/cart">View Cart</MenuLink>
+      <ShopifyCartButton />
       {!available && <p>This Product is out of Stock!</p>}
-    </>
+    </Container>
   );
 };
 

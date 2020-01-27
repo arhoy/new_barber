@@ -7,7 +7,6 @@ import { FaAlignRight } from 'react-icons/fa';
 import styled from '@emotion/styled';
 
 import { MobileMenu1 } from '../menus-mobile/Main/MobileMenu1';
-import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 
 import NoStyleLink from '../Links/NoStyleLink';
 
@@ -72,11 +71,6 @@ const BurgerIcon = styled(FaAlignRight)`
   }
 `;
 
-const CustomButtonStyle2 = styled(ButtonStyle2)`
-  font-size: 1.6rem;
-  display: flex;
-`;
-
 const CustomLink = styled(NoStyleLink)`
   color: ${props => props.theme.colors.white};
   height: 100%;
@@ -121,7 +115,7 @@ const NavSuperStore1 = () => {
 
         <NavContainer>
           <CustomLink to="/">Home </CustomLink>
-          <CustomLink to="/menu">Menu </CustomLink>
+          <CustomLink to="/cafe">Menu </CustomLink>
           <CustomLink to="/contact">Contact </CustomLink>
 
           {/* <MyMenu3 color={'white'} title={`Recipes`}>
@@ -131,10 +125,6 @@ const NavSuperStore1 = () => {
               </MegaMenu2>
             </Container1200>
           </MyMenu3> */}
-
-          <CustomButtonStyle2>
-            <a href="tel:587-772-5536">587-772-5536</a>
-          </CustomButtonStyle2>
         </NavContainer>
 
         <BurgerIcon onClick={mobileMenuHandler} />

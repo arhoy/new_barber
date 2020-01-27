@@ -1,33 +1,42 @@
-import React, { useContext } from 'react';
-import reduce from 'lodash/reduce';
+import React from 'react';
+import styled from '@emotion/styled';
+import { ShopifyCartButton } from '../../shopify/cart/ShopifyCartButton';
 
-import { CartCounter, Container, MenuLink, Wrapper } from './styles';
-import StoreContext from '../../../context/StoreContext';
+const Container = styled.div`
+  background: ${props => props.theme.colors.black2};
+  color: ${props => props.theme.colors.white};
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+`;
 
-const useQuantity = () => {
-  const {
-    store: { checkout },
-  } = useContext(StoreContext);
-  const items = checkout ? checkout.lineItems : [];
-  const total = reduce(items, (acc, item) => acc + item.quantity, 0);
-  console.log('quanitity is', checkout.lineItems);
-  return [total !== 0, total];
-};
+const Promo = styled.div`
+  & p {
+    font-size: 1.4rem;
+    &.desktop {
+      @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+        display: none;
+      }
+    }
+    &.mobile {
+      @media (min-width: ${props => props.theme.screenSize.mobileL}) {
+        display: none;
+      }
+    }
+  }
+`;
 
 const NavShopify = () => {
-  const [hasItems, quantity] = useQuantity();
-
   return (
-    <Wrapper>
-      <Container>
-        <MenuLink to="/">Home</MenuLink>
-        <MenuLink to="/cafe">Items</MenuLink>
-        <MenuLink to="/cart">
-          {hasItems && <CartCounter>{quantity}</CartCounter>}
-          Cart
-        </MenuLink>
-      </Container>
-    </Wrapper>
+    <Container>
+      <Promo>
+        <p className="desktop">Free Shipping On Orders Over $100</p>
+        <p className="mobile">Free Shipping $100+</p>
+      </Promo>
+      <ShopifyCartButton />
+    </Container>
   );
 };
 

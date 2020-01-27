@@ -1,35 +1,72 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import Image from 'gatsby-image';
+
 import { graphql } from 'gatsby';
 
-import { ProductTitle, ProductDescription, Img } from './styles';
-
 import ProductForm from '../../components/shopify/product/ProductForm';
-import {
-  Section,
-  Container800,
-} from '../../components/reusableStyles/sections/Sections';
+import { Section } from '../../components/reusableStyles/sections/Sections';
 import Layout from '../../components/layouts/Layout';
+import { H2 } from '../../components/reusableStyles/typography/Typography';
+
+const ProductTitle = styled(H2)``;
+
+const ProductDescriptionContainer = styled.div`
+  margin-top: 3rem;
+  & h4 {
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+    color: ${props => props.theme.colors.darkGrey};
+  }
+`;
+const ProductDescription = styled.div`
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 300;
+`;
+
+const Img = styled(Image)`
+  max-width: 50rem;
+  margin: 0 auto;
+`;
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SubContainer = styled.div``;
 
 const ShopifyProductPage = ({ data }) => {
   const product = data.shopifyProduct;
   return (
     <Layout>
       <Section>
-        <Container800>
-          {product.images.map(image => (
-            <Img
-              fluid={image.localFile.childImageSharp.fluid}
-              key={image.id}
-              alt={product.title}
-            />
-          ))}
+        <Container>
+          <SubContainer>
+            {product.images.map(image => (
+              <Img
+                fluid={image.localFile.childImageSharp.fluid}
+                key={image.id}
+                alt={product.title}
+              />
+            ))}
+          </SubContainer>
+          <SubContainer>
+            <ProductTitle>{product.title}</ProductTitle>
+            <ProductDescriptionContainer>
+              <h4> Description and Features </h4>
+              <ProductDescription
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              />
+            </ProductDescriptionContainer>
 
-          <ProductTitle>{product.title}</ProductTitle>
-          <ProductDescription
-            dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-          />
-          <ProductForm product={product} />
-        </Container800>
+            <ProductForm product={product} />
+          </SubContainer>
+        </Container>
       </Section>
     </Layout>
   );
