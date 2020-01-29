@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import Image from 'gatsby-image';
+
 import { graphql } from 'gatsby';
 
 import { FaPlus } from 'react-icons/fa';
@@ -8,13 +8,12 @@ import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
 
 import ProductForm from '../../components/shopify/product/ProductForm';
-import { Section } from '../../components/reusableStyles/sections/Sections';
+import {
+  Section,
+  Container1200,
+} from '../../components/reusableStyles/sections/Sections';
 import Layout from '../../components/layouts/Layout';
 import { H2 } from '../../components/reusableStyles/typography/Typography';
-import {
-  ImageSlider,
-  ImageContainerSlider2,
-} from '../../components/home/HomeStyling';
 
 const ProductTitle = styled(H2)`
   &.mobile {
@@ -48,7 +47,9 @@ const ProductDescription = styled.div`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-row: 1fr;
   grid-gap: 2rem;
+
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     grid-template-columns: 1fr;
   }
@@ -57,12 +58,11 @@ const Container = styled.div`
 const SubContainer1 = styled.div`
   outline: none;
   grid-column: 1/2;
+
   margin: auto;
 
-  min-width: 30rem;
-  max-width: 40vw;
-  min-height: 30rem;
-  max-height: auto;
+  width: 30rem;
+  height: 30rem;
 
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     max-width: 80vw;
@@ -81,8 +81,8 @@ const SubContainer1 = styled.div`
 
 const SubContainer2 = styled.div``;
 
-const CustomImage = styled(Image)`
-  outline: none;
+const CustomImage = styled.img`
+  width: 30rem;
 `;
 
 const ShopifyProductPage = ({ data }) => {
@@ -90,9 +90,9 @@ const ShopifyProductPage = ({ data }) => {
   const [modal, setModal] = useState(false);
   const [imageNumber, setImageNumber] = useState(0);
   const handleImageClick = i => {
-    setModal(prev => !prev);
     setImageNumber(i);
   };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -120,42 +120,44 @@ const ShopifyProductPage = ({ data }) => {
           mainSrc={
             product.images[imageNumber].localFile.childImageSharp.fluid.src
           }
-          onCloseRequest={e => handleImageClick(0)}
+          onCloseRequest={e => handleImageClick(imageNumber)}
         >
           Due
         </Lightbox>
       )}
       <Section>
-        <Container>
-          <SubContainer1>
-            <ProductTitle className="mobile">{product.title}</ProductTitle>
-            <ImageContainerSlider2>
-              <Slider {...settings}>
-                {product.images.map((image, i) => (
-                  <ImageSlider modal onClick={e => handleImageClick(i)} key={i}>
-                    <CustomImage
-                      fluid={image.localFile.childImageSharp.fluid}
-                    />
-                    <span className="zoom">
-                      <FaPlus />
-                    </span>
-                  </ImageSlider>
-                ))}
-              </Slider>
-            </ImageContainerSlider2>
-          </SubContainer1>
-          <SubContainer2>
-            <ProductTitle className="desktop">{product.title}</ProductTitle>
-            <ProductDescriptionContainer>
-              <h4> Description and Features </h4>
-              <ProductDescription
-                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+        <Container1200>
+          <Container>
+            <SubContainer1>
+              <ProductTitle className="mobile">{product.title}</ProductTitle>
+              <CustomImage
+                src={
+                  product.images[imageNumber].localFile.childImageSharp.fluid
+                    .src
+                }
               />
-            </ProductDescriptionContainer>
+              {product.images.map((image, i) => (
+                <img
+                  onClick={e => handleImageClick(i)}
+                  style={{ width: '8rem' }}
+                  src={image.originalSrc}
+                />
+              ))}
+            </SubContainer1>
+            <SubContainer2>
+              <ProductTitle className="desktop">{product.title}</ProductTitle>
 
-            <ProductForm product={product} />
-          </SubContainer2>
-        </Container>
+              <ProductDescriptionContainer>
+                <h4> Description and Features </h4>
+                <ProductDescription
+                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                />
+              </ProductDescriptionContainer>
+
+              <ProductForm product={product} />
+            </SubContainer2>
+          </Container>
+        </Container1200>
       </Section>
     </Layout>
   );

@@ -4,8 +4,8 @@ import Client from 'shopify-buy';
 import Context from '../context/StoreContext';
 
 const client = Client.buildClient({
-  storefrontAccessToken: `2b507eb5b8851fb146794eb35cbe662f`,
-  domain: `aquasar-cafe-shop.myshopify.com`,
+  storefrontAccessToken: `12756d1d13b33ee49952e93456e44aa3`,
+  domain: `dresscodeafrica.myshopify.com`,
 });
 
 const ContextProvider = ({ children }) => {

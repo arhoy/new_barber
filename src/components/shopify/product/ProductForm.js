@@ -41,9 +41,12 @@ const ProductForm = ({ product }) => {
     variants,
     variants: [initialVariant],
     priceRange: { minVariantPrice },
+    images,
   } = product;
+
   const [variant, setVariant] = useState({ ...initialVariant });
   const [quantity, setQuantity] = useState(1);
+  const [imageId, setImageId] = useState(0);
   const {
     addVariantToCart,
     store: { client, adding },
@@ -77,7 +80,7 @@ const ProductForm = ({ product }) => {
   const handleOptionChange = (optionIndex, { target }) => {
     const { value } = target;
     const currentOptions = [...variant.selectedOptions];
-
+    console.log(value);
     currentOptions[optionIndex] = {
       ...currentOptions[optionIndex],
       value,
@@ -113,11 +116,10 @@ const ProductForm = ({ product }) => {
     minimumFractionDigits: 2,
     style: 'currency',
   }).format(variant.price);
-  console.log(options);
+
   return (
     <Container>
       <PriceContainer>{price}</PriceContainer>
-
       {options.length > 0 &&
         options.map(({ id, name, values }, index) => {
           if (name === 'Title') {
@@ -129,7 +131,7 @@ const ProductForm = ({ product }) => {
                 <select
                   name={name}
                   key={id}
-                  onBlur={event => handleOptionChange(index, event)}
+                  onChange={event => handleOptionChange(index, event)}
                 >
                   {values.map(value => (
                     <option
@@ -145,6 +147,8 @@ const ProductForm = ({ product }) => {
             );
           }
         })}
+
+      <img style={{ width: '8rem' }} src={product.images[0].originalSrc} />
       <label htmlFor="quantity">Quantity </label>
       <input
         type="number"
@@ -155,7 +159,6 @@ const ProductForm = ({ product }) => {
         onChange={handleQuantityChange}
         value={quantity}
       />
-
       <ButtonStyle2
         type="submit"
         disabled={!available || adding}
@@ -164,7 +167,6 @@ const ProductForm = ({ product }) => {
       >
         Add to Cart
       </ButtonStyle2>
-
       <ShopifyCartButton text1={`CheckOut`} text2={`Cart`} />
       {!available && <p>This Product is out of Stock!</p>}
     </Container>
