@@ -7,6 +7,7 @@ import StoreContext from '../../../context/StoreContext';
 
 import { ButtonStyle2 } from '../../reusableStyles/buttons/Button';
 import { ShopifyCartButton } from '../cart/ShopifyCartButton';
+import { ShopifyImage1 } from '../imageComponents/ShopifyImage1';
 
 const Container = styled.div`
   padding: 2rem 0;
@@ -35,7 +36,7 @@ const PriceContainer = styled.div`
   color: ${props => props.theme.colors.primaryDark};
 `;
 
-const ProductForm = ({ product }) => {
+const ProductTemplate = ({ product }) => {
   const {
     options,
     variants,
@@ -77,12 +78,19 @@ const ProductForm = ({ product }) => {
     setQuantity(target.value);
   };
 
-  const handleOptionChange = (optionIndex, { target }) => {
-    const { value } = target;
+  const handleOptionChange = (index, e, name) => {
+    const optionIndex = e.target.selectedIndex;
+    console.log('EVENT OPTION INDEX IS', optionIndex, name);
+
+    if (name === 'Color') {
+      setImageId(optionIndex);
+    }
+    const { value } = e.target;
+
     const currentOptions = [...variant.selectedOptions];
-    console.log(value);
-    currentOptions[optionIndex] = {
-      ...currentOptions[optionIndex],
+
+    currentOptions[index] = {
+      ...currentOptions[index],
       value,
     };
 
@@ -122,6 +130,8 @@ const ProductForm = ({ product }) => {
       <PriceContainer>{price}</PriceContainer>
       {options.length > 0 &&
         options.map(({ id, name, values }, index) => {
+          // index of the each option type ie Color, Capacity
+          // name : ie(Color,Capacity)
           if (name === 'Title') {
             return null;
           } else {
@@ -131,10 +141,12 @@ const ProductForm = ({ product }) => {
                 <select
                   name={name}
                   key={id}
-                  onChange={event => handleOptionChange(index, event)}
+                  onChange={event => handleOptionChange(index, event, name)}
                 >
-                  {values.map(value => (
+                  {name}
+                  {values.map((value, i) => (
                     <option
+                      optionindex={i}
                       value={value}
                       key={`${name}-${value}`}
                       disabled={checkDisabled(name, value)}
@@ -147,8 +159,7 @@ const ProductForm = ({ product }) => {
             );
           }
         })}
-
-      <img style={{ width: '8rem' }} src={product.images[0].originalSrc} />
+      {}
       <label htmlFor="quantity">Quantity </label>
       <input
         type="number"
@@ -169,11 +180,13 @@ const ProductForm = ({ product }) => {
       </ButtonStyle2>
       <ShopifyCartButton text1={`CheckOut`} text2={`Cart`} />
       {!available && <p>This Product is out of Stock!</p>}
+
+      <ShopifyImage1 images={images} imageId={imageId} />
     </Container>
   );
 };
 
-ProductForm.propTypes = {
+ProductTemplate.propTypes = {
   product: PropTypes.shape({
     descriptionHtml: PropTypes.string,
     handle: PropTypes.string,
@@ -213,4 +226,4 @@ ProductForm.propTypes = {
   addVariantToCart: PropTypes.func,
 };
 
-export default ProductForm;
+export default ProductTemplate;

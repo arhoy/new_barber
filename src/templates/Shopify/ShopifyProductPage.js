@@ -3,17 +3,16 @@ import styled from '@emotion/styled';
 
 import { graphql } from 'gatsby';
 
-import { FaPlus } from 'react-icons/fa';
-import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
 
-import ProductForm from '../../components/shopify/product/ProductForm';
+import ProductTemplate from '../../components/shopify/product/ProductTemplate';
 import {
   Section,
   Container1200,
 } from '../../components/reusableStyles/sections/Sections';
 import Layout from '../../components/layouts/Layout';
 import { H2 } from '../../components/reusableStyles/typography/Typography';
+import { ShopifyImage1 } from '../../components/shopify/imageComponents/ShopifyImage1';
 
 const ProductTitle = styled(H2)`
   &.mobile {
@@ -81,36 +80,12 @@ const SubContainer1 = styled.div`
 
 const SubContainer2 = styled.div``;
 
-const CustomImage = styled.img`
-  width: 30rem;
-`;
-
-const ShopifyProductPage = ({ data }) => {
+const ShopifyProductPage = ({ data, images, imageId }) => {
   const product = data.shopifyProduct;
   const [modal, setModal] = useState(false);
   const [imageNumber, setImageNumber] = useState(0);
   const handleImageClick = i => {
     setImageNumber(i);
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    autoplaySpeed: 5000,
-    fadeIn: false,
-    autoplay: true,
-    pauseOnHover: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 600,
-        settings: {
-          dots: false,
-        },
-      },
-    ],
   };
 
   return (
@@ -130,14 +105,10 @@ const ShopifyProductPage = ({ data }) => {
           <Container>
             <SubContainer1>
               <ProductTitle className="mobile">{product.title}</ProductTitle>
-              <CustomImage
-                src={
-                  product.images[imageNumber].localFile.childImageSharp.fluid
-                    .src
-                }
-              />
+              <ShopifyImage1 images={product.images} imageId={imageNumber} />
               {product.images.map((image, i) => (
                 <img
+                  key={i}
                   onClick={e => handleImageClick(i)}
                   style={{ width: '8rem' }}
                   src={image.originalSrc}
@@ -154,7 +125,7 @@ const ShopifyProductPage = ({ data }) => {
                 />
               </ProductDescriptionContainer>
 
-              <ProductForm product={product} />
+              <ProductTemplate product={product} />
             </SubContainer2>
           </Container>
         </Container1200>
