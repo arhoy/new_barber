@@ -18,17 +18,17 @@ import Slider from 'react-slick';
 import SliderContainer2 from '../components/reusableStyles/slider/SliderContainer2';
 import { H1 } from '../components/reusableStyles/typography/Typography';
 import { ButtonStyle2Large } from '../components/reusableStyles/buttons/Button';
-import AboutUs from '../components/home/AboutUs';
-import AboutOurFood from '../components/home/AboutOurFood';
-import Catering from '../components/home/Catering';
+import Home1 from '../components/home/Home1';
+import Home2 from '../components/home/Home2';
+import Home3 from '../components/home/Home3';
 
-import HomeInfo from '../components/home/HomeInfo';
 import HomeAmmenties from '../components/home/HomeAmmenities';
 
 import HomeReview from '../components/home/HomeReview';
 import HomeGallery from '../components/home/HomeGallery';
 import Map1 from '../components/mapbox/Map1';
 import NoStyleLink from '../components/Links/NoStyleLink';
+import Home4 from '../components/home/Home4';
 
 const fadeInDown = keyframes`
 from {
@@ -192,32 +192,32 @@ const Home = ({ data }) => {
       </Slider>
 
       <SectionGrey>
-        <AboutUs />
+        <Home1 />
       </SectionGrey>
       <Section>
-        <AboutOurFood />
+        <Home2 />
       </Section>
       <SectionGrey>
-        <Catering />
+        <Home3 />
       </SectionGrey>
       <Section>
-        <HomeInfo />
+        <Home4 />
       </Section>
-      <SectionGrey>
+      {/* <SectionGrey>
         <Container1200>
           <HomeAmmenties />
         </Container1200>
-      </SectionGrey>
-      <Section>
+      </SectionGrey> */}
+      <SectionGrey>
         <Container1200>
           <HomeReview />
         </Container1200>
-      </Section>
-      <SectionGrey>
+      </SectionGrey>
+      {/* <SectionGrey>
         <Container1200>
           <HomeGallery />
         </Container1200>
-      </SectionGrey>
+      </SectionGrey> */}
 
       <Section>
         <Container1200>

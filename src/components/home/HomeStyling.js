@@ -14,6 +14,14 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
+  & li {
+    @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+      list-style: none;
+    }
+  }
+  & ul {
+    padding: 1rem 3rem;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -89,11 +97,20 @@ const ImageContainerSlider2 = styled.div`
   width: 100%;
 `;
 
-const BlurbContainer = styled.div``;
+const BlurbContainer = styled.div`
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
 const CustomP = styled(PBasic)`
-  font-family: Merienda;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 2.2rem;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    text-align: center;
+  }
 `;
 
 const CustomPHome = styled(PBasic)`
@@ -105,8 +122,10 @@ const CustomPHome = styled(PBasic)`
 const CustomH2 = styled(H2)`
   color: ${props => props.theme.colors.primary};
   margin-bottom: 1rem;
-  font-family: Parisienne;
   font-size: 4rem;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    text-align: center;
+  }
 `;
 
 const CustomH2Centered = styled(CustomH2)`

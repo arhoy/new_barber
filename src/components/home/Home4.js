@@ -1,13 +1,13 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import { HomeSection } from './Section/ContentfulSection';
+import { ContentfulHomeSection } from './Section/ContentfulSection';
 
-const AboutOurFood = () => {
+const Home4 = () => {
   const contentfulData = useStaticQuery(graphql`
     {
       contentfulSectionSimple(
-        id: { eq: "f8e519e4-348a-53c5-8ac7-1a6c725421d0" }
+        id: { eq: "6d8c4d90-cbf4-5a79-a528-874139c85dff" }
       ) {
         id
         title
@@ -27,7 +27,9 @@ const AboutOurFood = () => {
     }
   `);
 
-  return <HomeSection data={contentfulData.contentfulSectionSimple} />;
+  return (
+    <ContentfulHomeSection data={contentfulData.contentfulSectionSimple} />
+  );
 };
 
-export default AboutOurFood;
+export default Home4;

@@ -57,7 +57,6 @@ const HomeReview = () => {
         consequuntur`}
               img={`https://demoapus.com/abolire/wp-content/uploads/2019/09/avata-1.jpg`}
               user={`Hoark Ficsher`}
-              position={`Coffee Connoisseur`}
             />
           </Card>
 
@@ -71,7 +70,6 @@ const HomeReview = () => {
         consequuntur`}
               img={`https://demoapus.com/abolire/wp-content/uploads/2019/09/avata-4.jpg`}
               user={`Ana Bella`}
-              position={`Coffee Lover`}
             />
           </Card>
           <Card>
@@ -84,7 +82,6 @@ const HomeReview = () => {
         consequuntur`}
               img={`https://demoapus.com/abolire/wp-content/uploads/2019/09/avata-3.jpg`}
               user={`Dimple Dink`}
-              position={`Coffee Critique`}
             />
           </Card>
           <Card>
@@ -97,7 +94,6 @@ const HomeReview = () => {
         consequuntur`}
               img={`https://demoapus.com/abolire/wp-content/uploads/2019/09/avata-3.jpg`}
               user={`Greco Kohl`}
-              position={`Student`}
             />
           </Card>
           <Card>
@@ -110,7 +106,6 @@ const HomeReview = () => {
         consequuntur`}
               img={`https://demoapus.com/abolire/wp-content/uploads/2019/09/avata-3.jpg`}
               user={`Moria Switzl`}
-              position={`City Mayor`}
             />
           </Card>
         </CustomSlider>

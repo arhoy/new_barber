@@ -12,6 +12,7 @@ import {
   CustomP,
   ImageContainerSlider,
   StyledImage,
+  CustomButton,
 } from '../HomeStyling';
 import { ButtonStyle2 } from '../../reusableStyles/buttons/Button';
 import NoStyleLink from '../../Links/NoStyleLink';
@@ -36,7 +37,7 @@ const CustomContainer = styled(Container)`
   }
 `;
 
-export const HomeSection = ({ data }) => {
+export const ContentfulHomeSection = ({ data }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -120,9 +121,9 @@ export const HomeSection = ({ data }) => {
 
           {documentToReactComponents(json, options)}
 
-          <ButtonStyle2>
-            <NoStyleLink to="/cafe">Shop Now</NoStyleLink>
-          </ButtonStyle2>
+          <CustomButton>
+            <NoStyleLink to="/shop">Shop Now</NoStyleLink>
+          </CustomButton>
         </BlurbContainer>
       </CustomContainerReverse>
     );
@@ -135,9 +136,9 @@ export const HomeSection = ({ data }) => {
 
         {documentToReactComponents(json, options)}
 
-        <ButtonStyle2>
+        <CustomButton>
           <NoStyleLink to="/cafe">Show Now</NoStyleLink>
-        </ButtonStyle2>
+        </CustomButton>
       </BlurbContainer>
       <ImageContainerSlider>
         {pictures.length > 1 ? (
