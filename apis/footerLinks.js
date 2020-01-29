@@ -5,15 +5,15 @@ const footerLinks = [
     description:
       'This is a template which will incorporate some sort of CMS the fucking client can edit',
     image:
-      'https://res.cloudinary.com/dcb389szc/image/upload/v1571449377/aquasar.io/AdobeStock_136021630.jpg',
+      'https://res.cloudinary.com/dcb389szc/image/upload/v1571449377/dresscode.io/AdobeStock_136021630.jpg',
     slug: ``,
   },
   {
     id: 2,
-    title: 'Menu',
+    title: 'Shop',
     category: '',
     description: 'Lorem Ipsum Lorem Contact',
-    slug: `menu`,
+    slug: `shop`,
   },
   {
     id: 3,

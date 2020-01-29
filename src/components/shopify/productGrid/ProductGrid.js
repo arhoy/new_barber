@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
-import Image from 'gatsby-image';
+
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
 import StoreContext from '../../../context/StoreContext';
 
 const Grid = styled.div`
-  margin: 4rem 2rem;
-
+  background: ${props => props.theme.colors.primaryLight};
+  min-height: 60vh;
   display: grid;
 
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -33,7 +33,6 @@ const Title = styled.span`
 `;
 
 const PriceTag = styled.span`
-  font-weight: 300;
   font-size: 1.6rem;
   text-align: center;
   margin-top: 1rem;
@@ -43,7 +42,7 @@ const PriceTag = styled.span`
   }
 `;
 
-const Img = styled(Image)`
+const Img = styled.img`
   width: 10rem;
   height: 10rem;
   object-fit: cover;
@@ -108,7 +107,7 @@ const ProductGrid = () => {
               <Link to={`/product/${handle}/`}>
                 {firstImage && firstImage.localFile && (
                   <Img
-                    fluid={firstImage.localFile.childImageSharp.fluid}
+                    src={firstImage.localFile.childImageSharp.fluid.src}
                     alt={handle}
                   />
                 )}

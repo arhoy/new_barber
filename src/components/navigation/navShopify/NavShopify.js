@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { ShopifyCartButton } from '../../shopify/cart/ShopifyCartButton';
 
 const Container = styled.div`
-  background: ${props => props.theme.colors.black2};
+  background: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.white};
   display: flex;
   justify-content: space-around;
@@ -32,10 +32,10 @@ const NavShopify = () => {
   return (
     <Container>
       <Promo>
-        <p className="desktop">Free Shipping On Orders Over $100</p>
-        <p className="mobile">Free Shipping $100+</p>
+        <p className="desktop">Free Shipping On Orders Over CFA 500K</p>
+        <p className="mobile">Free Shipping CFA 500K+</p>
       </Promo>
-      <ShopifyCartButton text1={`CART`} text2={`Empty Cart`} />
+      <ShopifyCartButton text1={`CART`} text2={`CART`} />
     </Container>
   );
 };

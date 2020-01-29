@@ -20,13 +20,13 @@ const ShopifyCart = () => {
     <div>
       {line_items}
       <h2>Subtotal</h2>
-      <p>$ {checkout.subtotalPrice}</p>
+      <p>CFA {checkout.subtotalPrice}</p>
       <br />
       <h2>Taxes</h2>
-      <p>$ {checkout.totalTax}</p>
+      <p>CFA {checkout.totalTax}</p>
       <br />
       <h2>Total</h2>
-      <p>$ {checkout.totalPrice}</p>
+      <p>CFA {checkout.totalPrice}</p>
 
       <br />
       <ButtonStyle2Large

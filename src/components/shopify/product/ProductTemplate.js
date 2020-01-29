@@ -16,6 +16,7 @@ import { H2 } from '../../reusableStyles/typography/Typography';
 
 const Container = styled.div`
   display: grid;
+  min-height: 80vh;
   grid-template-columns: 1fr 1fr;
   @media (max-width: ${props => props.theme.screenSize.eightHundred}) {
     grid-template-columns: 1fr;
@@ -35,7 +36,7 @@ const SubContainer1 = styled.div`
 
 const SubContainer2 = styled.div`
   grid-colum: 2/-1;
-  background: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.primaryLight};
   padding: 4rem 5rem;
   & input,
   select {
@@ -131,7 +132,6 @@ const ProductTemplate = ({ product }) => {
 
   const handleOptionChange = (index, e, name) => {
     const optionIndex = e.target.selectedIndex;
-    console.log('EVENT OPTION INDEX IS', optionIndex, name);
 
     if (name === 'Color') {
       setImageId(optionIndex);

@@ -31,7 +31,7 @@ const RRCWithZoom = ({ images }) => {
 
     margin: 0 auto;
   `;
-  console.log('Images are ', images);
+
   return (
     <Div>
       <ReactImageMagnify

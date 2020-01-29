@@ -5,7 +5,7 @@ require('dotenv').config({
 // Define site URL here
 let URL;
 if (process.env.NODE_ENV === 'production') {
-  URL = 'https://aquasarcafe.netlify.com/';
+  URL = 'https://dresscodecafe.netlify.com/';
 } else {
   URL = 'http://localhost:8000';
 }
@@ -17,7 +17,7 @@ module.exports = {
     title: 'Dress Code Africa',
     description: 'Online Ecommerce for the African Continent',
     author: 'Alex Quasar',
-    twitterUsername: '@_aquasar',
+    twitterUsername: '@_dresscode',
     image: '/default.png',
     siteUrl: URL,
   },

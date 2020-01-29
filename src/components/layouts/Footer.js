@@ -157,17 +157,16 @@ const Footer = () => {
               </SocialIconContainer>
             </LinkContainers>
             <LinkContainers>
-              <LinkHeaders>Aquasar Cafe</LinkHeaders>
+              <LinkHeaders>dresscode</LinkHeaders>
               <CustomLinks to="/contact">Contact Us</CustomLinks>
             </LinkContainers>
           </LinkColumnContainers>
           <LinkColumnContainers>
             <LinkContainers>
               <LinkHeaders>Email Us</LinkHeaders>
-              <LinkDescription>aquasar2020@gmail.com</LinkDescription>
+              <LinkDescription>dresscode2020@gmail.com</LinkDescription>
             </LinkContainers>
             <LinkContainers>
-              <LinkHeaders>Can't Find Your Dish?</LinkHeaders>
               <CustomLinks to="/contact">Tell Us Which One</CustomLinks>
               <CustomLinks to="/contact">Report an issue</CustomLinks>
               <CustomLinks to="/privacy-policy">Privacy Policy</CustomLinks>
@@ -181,8 +180,12 @@ const Footer = () => {
 
       <Attribution>
         Created by{' '}
-        <A target="_blank" rel="noopener noreferrer" href="https://aquasar.io/">
-          Aquasar.io {d} &copy;
+        <A
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://dresscode.io/"
+        >
+          dresscode.io {d} &copy;
         </A>
       </Attribution>
     </Container>

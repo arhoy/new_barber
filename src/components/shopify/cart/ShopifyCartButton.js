@@ -17,12 +17,12 @@ const CartCounterDiv = styled.div`
 
   width: 3rem;
   height: 3rem;
-  border: 3px solid ${props => props.theme.colors.white};
+  border: 3px solid ${props => props.theme.colors.inherit};
   border-radius: 6px;
   z-index: 10;
 `;
 const CartCounter = styled.span`
-  color: ${props => props.theme.colors.primary};
+  color: inherit;
   z-index: 20;
 `;
 
@@ -38,7 +38,6 @@ const CheckoutButton = styled(ButtonStyle2)`
 
   border: none;
   padding: 0.5rem 0.8rem;
-  color: ${props => props.theme.colors.white};
   background: ${props => props.theme.colors.primary};
   font-weight: bold;
   cursor: pointer;
@@ -53,13 +52,9 @@ const CheckoutButton = styled(ButtonStyle2)`
   }
 
   &:disabled {
-    color: ${props => props.theme.colors.black};
-    background: ${props => props.theme.colors.lightgrey};
+    background: ${props => props.theme.colors.primary};
     font-size: 1.3rem;
-    &:hover {
-      font-weight: bold;
-      background: ${props => props.theme.colors.lightgrey};
-    }
+
     cursor: not-allowed;
   }
 `;

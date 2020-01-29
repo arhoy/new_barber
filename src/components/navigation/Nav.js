@@ -14,8 +14,8 @@ const Header = styled.header`
   height: 80px;
   position: relative;
 
-  background: ${props => props.theme.colors.black};
-  color: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.black};
 
   display: flex;
 
@@ -44,6 +44,7 @@ const Logo = styled.div`
 const LogoLink = styled(Link)`
   display: flex;
   flex-direction: column;
+  color: ${props => props.theme.colors.black};
   font-size: 2.9rem;
   padding: 0;
   margin: 0;
@@ -52,7 +53,7 @@ const LogoLink = styled(Link)`
 `;
 
 const NavContainer = styled.nav`
-  color: ${props => props.theme.colors.white};
+  color: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,20 +73,16 @@ const BurgerIcon = styled(FaAlignRight)`
 `;
 
 const CustomLink = styled(NoStyleLink)`
-  color: ${props => props.theme.colors.white};
+  color: inherit;
   height: 100%;
   padding: 1rem;
   margin: 1rem;
   & :hover {
-    background: ${props => props.theme.colors.primary};
+    background: ${props => props.theme.colors.primaryLight};
   }
 `;
 
-const LogoImage = styled.img`
-  max-height: 80px;
-`;
-
-const NavSuperStore1 = () => {
+const Nav = () => {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "Logo.png" }) {
@@ -108,14 +105,12 @@ const NavSuperStore1 = () => {
     <>
       <Header>
         <Logo>
-          <LogoLink to="/">
-            <LogoImage src={image.sharp.fluid.src} />
-          </LogoLink>
+          <LogoLink to="/">Dress Code</LogoLink>
         </Logo>
 
         <NavContainer>
           <CustomLink to="/">Home </CustomLink>
-          <CustomLink to="/cafe">Menu </CustomLink>
+          <CustomLink to="/shop">Shop </CustomLink>
           <CustomLink to="/contact">Contact </CustomLink>
 
           {/* <MyMenu3 color={'white'} title={`Recipes`}>
@@ -136,4 +131,4 @@ const NavSuperStore1 = () => {
   );
 };
 
-export default NavSuperStore1;
+export default Nav;

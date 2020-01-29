@@ -28,6 +28,7 @@ import HomeAmmenties from '../components/home/HomeAmmenities';
 import HomeReview from '../components/home/HomeReview';
 import HomeGallery from '../components/home/HomeGallery';
 import Map1 from '../components/mapbox/Map1';
+import NoStyleLink from '../components/Links/NoStyleLink';
 
 const fadeInDown = keyframes`
 from {
@@ -57,9 +58,9 @@ const HeroBackgroundImage = styled(BackgroundImage)`
   width: 100%;
   height: 88vh;
   background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.3)
+    to right bottom,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.5)
   );
   background-size: cover;
   background-position: top;
@@ -91,7 +92,7 @@ const HeroContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.black};
   max-width: 80rem;
   margin: 0 auto;
 
@@ -99,7 +100,7 @@ const HeroContent = styled.div`
   border-top-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
   & ${H1} {
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.black};
     font-weight: 100;
     font-size: 6rem;
     animation: ${fadeInDown} 0.4s;
@@ -178,10 +179,11 @@ const Home = ({ data }) => {
             <HeroBackgroundImage fluid={data.heroImage.childImageSharp.fluid}>
               <HeroContentContainer>
                 <HeroContent>
-                  <H1>Modern Coffee House</H1>
-                  <span>
-                    Brewing Passion in Edmonton's Brewery District since 1929
-                  </span>
+                  <H1>Dress Code</H1>
+                  <span>Premium Electronics and Fashion Store</span>
+                  <ButtonStyle2Large>
+                    <NoStyleLink to="/shop">Shop Now</NoStyleLink>
+                  </ButtonStyle2Large>
                 </HeroContent>
               </HeroContentContainer>
             </HeroBackgroundImage>
