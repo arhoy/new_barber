@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
+
 import styled from '@emotion/styled';
 import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
@@ -8,10 +9,34 @@ import StoreContext from '../../../context/StoreContext';
 import { ButtonStyle2 } from '../../reusableStyles/buttons/Button';
 import { ShopifyCartButton } from '../cart/ShopifyCartButton';
 import { ShopifyImage1 } from '../imageComponents/ShopifyImage1';
+import { ProductDisplay } from './ProductDisplay';
+import { ProductOptions } from './ProductOptions';
+
+import { H2 } from '../../reusableStyles/typography/Typography';
 
 const Container = styled.div`
-  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media (max-width: ${props => props.theme.screenSize.eightHundred}) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 4rem;
+  }
+`;
 
+const SubContainer1 = styled.div`
+  grid-column: 1/2;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const SubContainer2 = styled.div`
+  grid-colum: 2/-1;
+  background: ${props => props.theme.colors.white};
+  padding: 4rem 5rem;
   & input,
   select {
     padding: 0.5rem;
@@ -27,18 +52,44 @@ const Container = styled.div`
   }
 `;
 
-const Option = styled.div`
-  margin: 1rem 0;
+const ProductTitle = styled(H2)`
+  &.mobile {
+    font-size: 3.8rem;
+  }
+  @media (max-width: ${props => props.theme.screenSize.eightHundred}) {
+    &.desktop {
+      display: none;
+    }
+  }
+  @media (min-width: ${props => props.theme.screenSize.eightHundred}) {
+    &.mobile {
+      display: none;
+    }
+  }
 `;
 
 const PriceContainer = styled.div`
   font-size: 3rem;
   color: ${props => props.theme.colors.primaryDark};
+  @media (min-width: ${props => props.theme.screenSize.eightHundred}) {
+    &.mobile {
+      display: none;
+    }
+  }
+`;
+
+const ShopifyImages = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  & img {
+    width: 8rem;
+    cursor: pointer;
+  }
 `;
 
 const ProductTemplate = ({ product }) => {
   const {
-    options,
     variants,
     variants: [initialVariant],
     priceRange: { minVariantPrice },
@@ -105,6 +156,10 @@ const ProductTemplate = ({ product }) => {
     addVariantToCart(productVariant.shopifyId, quantity);
   };
 
+  const handleImageClick = i => {
+    setImageId(i);
+  };
+
   const checkDisabled = (name, value) => {
     const match = find(variants, {
       selectedOptions: [
@@ -127,61 +182,48 @@ const ProductTemplate = ({ product }) => {
 
   return (
     <Container>
-      <PriceContainer>{price}</PriceContainer>
-      {options.length > 0 &&
-        options.map(({ id, name, values }, index) => {
-          // index of the each option type ie Color, Capacity
-          // name : ie(Color,Capacity)
-          if (name === 'Title') {
-            return null;
-          } else {
-            return (
-              <Option key={id}>
-                <label htmlFor={name}> {name} </label>
-                <select
-                  name={name}
-                  key={id}
-                  onChange={event => handleOptionChange(index, event, name)}
-                >
-                  {name}
-                  {values.map((value, i) => (
-                    <option
-                      optionindex={i}
-                      value={value}
-                      key={`${name}-${value}`}
-                      disabled={checkDisabled(name, value)}
-                    >
-                      {value}
-                    </option>
-                  ))}
-                </select>
-              </Option>
-            );
-          }
-        })}
-      {}
-      <label htmlFor="quantity">Quantity </label>
-      <input
-        type="number"
-        id="quantity"
-        name="quantity"
-        min="1"
-        step="1"
-        onChange={handleQuantityChange}
-        value={quantity}
-      />
-      <ButtonStyle2
-        type="submit"
-        disabled={!available || adding}
-        onClick={handleAddToCart}
-        style={{ display: 'block' }}
-      >
-        Add to Cart
-      </ButtonStyle2>
-      <ShopifyCartButton text1={`CheckOut`} text2={`Cart`} />
-      {!available && <p>This Product is out of Stock!</p>}
+      <SubContainer1>
+        <ProductTitle className="mobile">{product.title}</ProductTitle>
+        <PriceContainer className="mobile">{price}</PriceContainer>
+        <ShopifyImage1
+          onClick={e => handleImageClick(imageId)}
+          images={images}
+          imageId={imageId}
+        />
+        <ShopifyImages>
+          {product.images.map((image, i) => (
+            <img
+              key={i}
+              onClick={e => handleImageClick(i)}
+              src={image.originalSrc}
+              alt={``}
+            />
+          ))}
+        </ShopifyImages>
+      </SubContainer1>
+      <SubContainer2>
+        <ProductTitle className="desktop">{product.title}</ProductTitle>
+        <PriceContainer>{price}</PriceContainer>
+        <ProductDisplay product={product} />
+        <ProductOptions
+          options={product.options}
+          handleOptionChange={handleOptionChange}
+          handleQuantityChange={handleQuantityChange}
+          checkDisabled={checkDisabled}
+          quantity={quantity}
+        />
 
-      <ShopifyImage1 images={images} imageId={imageId} />
+        <ButtonStyle2
+          type="submit"
+          disabled={!available || adding}
+          onClick={handleAddToCart}
+          style={{ display: 'block' }}
+        >
+          Add to Cart
+        </ButtonStyle2>
+        <ShopifyCartButton text1={`CheckOut`} text2={`Cart`} />
+        {!available && <p>This Product is out of Stock!</p>}
+      </SubContainer2>
     </Container>
   );
 };
