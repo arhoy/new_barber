@@ -3,7 +3,8 @@ import { FaTimes } from 'react-icons/fa';
 import NoStyleLink from '../Links/NoStyleLink';
 
 const MobileMenuContainer = styled.div`
-  background: ${props => props.theme.colors.black};
+  border-top: 3px solid ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.primary};
   display: flex;
   flex-direction: column;
   justify-content: center;
