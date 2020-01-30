@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import styled from '@emotion/styled';
 
-import 'react-image-lightbox/style.css';
-
 const ImageContainer = styled.div`
   object-fit: cover;
   max-width: 34rem;

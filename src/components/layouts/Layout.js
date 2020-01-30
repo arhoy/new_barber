@@ -8,10 +8,14 @@ import PropTypes from 'prop-types';
 import Nav from '../navigation/Nav';
 import Footer from './Footer';
 
-// real global scss styles
-import '../../scss/main.scss';
 import ContextProvider from '../../provider/ContextProvider';
 import NavShopify from '../navigation/navShopify/NavShopify';
+
+// real global scss styles
+import '../../scss/main.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import 'react-image-lightbox/style.css';
 
 const theme = {
   colors: {

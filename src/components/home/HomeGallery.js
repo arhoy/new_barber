@@ -11,10 +11,6 @@ import {
 import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import 'react-image-lightbox/style.css';
-
 import { Container800 } from '../reusableStyles/sections/Sections';
 
 const Container = styled.div`

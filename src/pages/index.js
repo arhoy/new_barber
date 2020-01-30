@@ -4,9 +4,6 @@ import { keyframes } from '@emotion/core';
 import { graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 import Layout from '../components/layouts/Layout';
 import {
   Section,
