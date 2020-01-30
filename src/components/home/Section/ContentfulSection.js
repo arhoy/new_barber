@@ -137,7 +137,7 @@ export const ContentfulHomeSection = ({ data }) => {
         {documentToReactComponents(json, options)}
 
         <CustomButton>
-          <NoStyleLink to="/cafe">Show Now</NoStyleLink>
+          <NoStyleLink to="/shop">Show Now</NoStyleLink>
         </CustomButton>
       </BlurbContainer>
       <ImageContainerSlider>

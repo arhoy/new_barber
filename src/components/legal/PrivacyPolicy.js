@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import { HomeSection } from '../home/Section/ContentfulSection';
+import { ContentfulHomeSection } from '../home/Section/ContentfulSection';
 
 const PrivacyPolicy = () => {
   const contentfulData = useStaticQuery(graphql`
@@ -27,7 +27,9 @@ const PrivacyPolicy = () => {
     }
   `);
 
-  return <HomeSection data={contentfulData.contentfulSectionSimple} />;
+  return (
+    <ContentfulHomeSection data={contentfulData.contentfulSectionSimple} />
+  );
 };
 
 export default PrivacyPolicy;

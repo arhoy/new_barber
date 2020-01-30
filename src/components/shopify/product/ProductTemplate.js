@@ -85,6 +85,7 @@ const ShopifyImages = styled.div`
   flex-wrap: wrap;
   & img {
     width: 8rem;
+    margin: 4px;
     cursor: pointer;
   }
 `;

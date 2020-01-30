@@ -22,10 +22,8 @@ import Home1 from '../components/home/Home1';
 import Home2 from '../components/home/Home2';
 import Home3 from '../components/home/Home3';
 
-import HomeAmmenties from '../components/home/HomeAmmenities';
-
 import HomeReview from '../components/home/HomeReview';
-import HomeGallery from '../components/home/HomeGallery';
+
 import Map1 from '../components/mapbox/Map1';
 import NoStyleLink from '../components/Links/NoStyleLink';
 import Home4 from '../components/home/Home4';
@@ -203,21 +201,12 @@ const Home = ({ data }) => {
       <Section>
         <Home4 />
       </Section>
-      {/* <SectionGrey>
-        <Container1200>
-          <HomeAmmenties />
-        </Container1200>
-      </SectionGrey> */}
+
       <SectionGrey>
         <Container1200>
           <HomeReview />
         </Container1200>
       </SectionGrey>
-      {/* <SectionGrey>
-        <Container1200>
-          <HomeGallery />
-        </Container1200>
-      </SectionGrey> */}
 
       <Section>
         <Container1200>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import styled from '@emotion/styled';
 
+import 'react-image-lightbox/style.css';
+
 const ImageContainer = styled.div`
   object-fit: cover;
   max-width: 34rem;
@@ -24,6 +26,7 @@ export const ShopifyImage1 = ({ images, imageId }) => {
           Due
         </Lightbox>
       )}
+
       <Image
         onClick={e => setModal(true)}
         src={images[imageId].localFile.childImageSharp.fluid.src}
