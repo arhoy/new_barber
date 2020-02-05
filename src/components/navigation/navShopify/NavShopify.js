@@ -32,8 +32,8 @@ const NavShopify = () => {
   return (
     <Container>
       <Promo>
-        <p className="desktop">Free Shipping On Orders Over CFA 500K</p>
-        <p className="mobile">Free Shipping CFA 500K+</p>
+        <p className="desktop">Edmonton Barber Website | Find Your Barber</p>
+        <p className="mobile">Edmonton Barber Site</p>
       </Promo>
       <ShopifyCartButton text1={`CART`} text2={`CART`} />
     </Container>

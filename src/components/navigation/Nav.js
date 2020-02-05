@@ -42,14 +42,17 @@ const Logo = styled.div`
   margin: 0;
 `;
 const LogoLink = styled(Link)`
-  display: flex;
-  flex-direction: column;
   color: ${props => props.theme.colors.black};
-  font-size: 2.9rem;
+  font-size: 2.7rem;
   padding: 0;
   margin: 0;
 
   text-decoration: none !important;
+
+  & span {
+    font-size: 3.6rem;
+    display: inline;
+  }
 `;
 
 const NavContainer = styled.nav`
@@ -105,7 +108,9 @@ const Nav = () => {
     <>
       <Header>
         <Logo>
-          <LogoLink to="/">Dress Code</LogoLink>
+          <LogoLink to="/">
+            <span>N</span>ew <span>B</span>arber
+          </LogoLink>
         </Logo>
 
         <NavContainer>

@@ -5,7 +5,7 @@ require('dotenv').config({
 // Define site URL here
 let URL;
 if (process.env.NODE_ENV === 'production') {
-  URL = 'https://dresscodecafe.netlify.com/';
+  URL = 'https://newbarber.ca/';
 } else {
   URL = 'http://localhost:8000';
 }
@@ -14,8 +14,8 @@ const queries = require('./src/utils/algolia');
 
 module.exports = {
   siteMetadata: {
-    title: 'Dress Code Africa',
-    description: 'Online Ecommerce for the African Continent',
+    title: 'New Barber',
+    description: `Find the Best Barber in Edmonton`,
     author: 'Alex Quasar',
     twitterUsername: '@_dresscode',
     image: '/default.png',
@@ -41,12 +41,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          `Merienda\:300,500,700`,
-          `Sacramento`,
-          `Montserrat`,
-          `Parisienne`,
-        ],
+        fonts: [`Roboto\:100,300,500,700`, `Helvetica\:100,300,500,700`],
         display: 'swap',
       },
     },

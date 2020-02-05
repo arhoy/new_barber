@@ -1,7 +1,7 @@
 {
-  "name": "dresscodeafrica",
+  "name": "newbarber",
   "private": false,
-  "description": "Dress Code Africa - Online Ecommerce for the African Continent",
+  "description": "New Barber - Best Local Edmonton Barber",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -87,6 +87,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arhoy/dresscodeafrica"
+    "url": "https://github.com/arhoy/new_barber"
   }
 }

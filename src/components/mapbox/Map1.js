@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import storeLocations from './data/fashionStoreCoordinates';
+import storeLocations from './data/dataCoordinates';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { SimpleAlertPrimary } from '../reusableStyles/alerts/SimpleAlerts';
 import { Bold, P } from '../reusableStyles/typography/Typography';
@@ -17,6 +17,7 @@ const PopupDiv = styled.div``;
 const SelectionHighlight = styled.div`
   display: flex;
   justify-content: flex-end;
+  background: ${props => props.theme.colors.white};
 `;
 
 const Map1 = ({ title, mapStyle, height, width }) => {
@@ -45,7 +46,7 @@ const Map1 = ({ title, mapStyle, height, width }) => {
         {...viewport}
         mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
         mapStyle={mapStyle}
-        scrollZoom={false}
+        scrollZoom={true}
         onViewportChange={viewport => {
           setViewport(viewport);
         }}

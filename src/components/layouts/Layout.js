@@ -19,15 +19,15 @@ import 'react-image-lightbox/style.css';
 
 const theme = {
   colors: {
-    primary: '#C8C682',
-    primaryDark: '#B3B15F',
-    primaryLight: '#F0EFD5',
+    primary: 'rgb(252, 69, 53)',
+    primaryDark: 'rgb(219, 18, 0)',
+    primaryLight: 'rgb(255, 124, 112)',
     primaryVeryLight: 'rgb(253, 229, 179)',
     primaryTransparent: 'rgb(220,128,37,0.10)',
     secondary: 'rgb(24, 163, 201)',
-    lightgrey: '#E0E0E0',
+    lightgrey: '#F2F2F2',
     lightgrey2: 'rgb(224, 217, 217)',
-    white: '#F9F9F9',
+    white: 'rgb(255, 255, 255)',
     black: 'black',
     black2: 'rgb(38, 34, 27)',
     blackTransparent: 'rgba(41, 43, 46, 0.3)',
@@ -105,7 +105,7 @@ const FullFooterLayout = styled.footer`
 `;
 
 const Layout = ({ children, full }) => {
-  const bodyColor = '#F9F9F9';
+  const bodyColor = 'rgb(255, 255, 255)';
 
   return (
     <ContextProvider>
@@ -132,9 +132,6 @@ const Layout = ({ children, full }) => {
               <Nav />
             </FullNavLayout>
             <MainFull>{children}</MainFull>
-            <FullFooterLayout>
-              <Footer />
-            </FullFooterLayout>
           </Div>
         </ThemeProvider>
       ) : (
@@ -146,9 +143,6 @@ const Layout = ({ children, full }) => {
           <DivFixed>
             <Main>{children}</Main>
           </DivFixed>
-          <FooterLayout>
-            <Footer />
-          </FooterLayout>
         </ThemeProvider>
       )}
     </ContextProvider>
