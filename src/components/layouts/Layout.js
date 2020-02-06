@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 import Nav from '../navigation/Nav';
-import Footer from './Footer';
 
 import ContextProvider from '../../provider/ContextProvider';
 import NavShopify from '../navigation/navShopify/NavShopify';
@@ -30,7 +29,7 @@ const theme = {
     white: 'rgb(255, 255, 255)',
     black: 'black',
     black2: 'rgb(38, 34, 27)',
-    blackTransparent: 'rgba(41, 43, 46, 0.3)',
+    blackTransparent: 'rgba(41, 43, 46, 0.7)',
     darkGrey: 'rgb(109, 109, 109)',
     red: 'rgb(218, 18, 31)',
     redTransparent: 'rgb(218, 18, 31,0.8)',
@@ -93,14 +92,6 @@ const Main = styled.main`
 `;
 
 const MainFull = styled.main`
-  grid-column: full-start/full-end;
-`;
-
-const FooterLayout = styled.footer`
-  grid-column: center-start/center-end;
-`;
-
-const FullFooterLayout = styled.footer`
   grid-column: full-start/full-end;
 `;
 

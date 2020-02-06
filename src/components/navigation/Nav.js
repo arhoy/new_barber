@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+
 import { Link } from 'gatsby';
 
 import { FaAlignRight } from 'react-icons/fa';
@@ -86,18 +86,6 @@ const CustomLink = styled(NoStyleLink)`
 `;
 
 const Nav = () => {
-  const { image } = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "Logo.png" }) {
-        sharp: childImageSharp {
-          fluid(maxWidth: 600) {
-            src
-          }
-        }
-      }
-    }
-  `);
-
   const [mobileMenuOpen, setMobileMenu] = useState(false);
 
   const mobileMenuHandler = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 
 import styled from '@emotion/styled';
@@ -46,34 +47,47 @@ const SubContainer2 = styled.div`
   height: 70vh;
   background: ${props => props.theme.colors.lightgrey};
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    grid-column: 1/-1;
+    display: none;
   }
 `;
 
 export const Ylp = () => {
   const data = GetAllYlpHook();
 
-  const [showMap, setShowMap] = useState(false);
-  const showMapHandler = () => {
-    setShowMap(prev => !prev);
+  const [selected, setSelected] = useState(null);
+  const selectedHandler = (e, selected) => {
+    setSelected(selected);
   };
+
   return (
     <Container>
       <Header>
         <HeaderTitle> Edmonton's Best Barbers </HeaderTitle>
-        <HeaderButton onClick={showMapHandler}> Show Map </HeaderButton>
+
+        <HeaderButton> Show Map </HeaderButton>
       </Header>
-      <SubContainer1 display={showMap}>
-        {data.map(item => (
-          <YlpCard item={item} />
+      <SubContainer1>
+        {data.map(location => (
+          <div
+            key={location.id}
+            onMouseEnter={e => selectedHandler(e, location)}
+          >
+            <YlpCard location={location} />
+          </div>
         ))}
       </SubContainer1>
 
-      <SubContainer2 display={showMap}>
+      <SubContainer2>
         <Map1
+          data={data}
           mapStyle="mapbox://styles/arhoy/ck5n2qqyf0i0v1inwxwapkl7c"
           width="100%"
-          height="70vh"
+          height="75vh"
+          zoom={10}
+          latitude={53.5461}
+          longitude={-113.4938}
+          selectedHandler={selectedHandler}
+          selected={selected}
         />
       </SubContainer2>
     </Container>

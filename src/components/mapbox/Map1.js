@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
+import { FaPhone } from 'react-icons/fa';
 import styled from '@emotion/styled';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import storeLocations from './data/dataCoordinates';
+
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { SimpleAlertPrimary } from '../reusableStyles/alerts/SimpleAlerts';
 import { Bold, P } from '../reusableStyles/typography/Typography';
 import { CustomH2 } from '../home/HomeStyling';
+import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
 
 const Icon = styled(FaMapMarkerAlt)`
   color: ${props => props.theme.colors.primary};
   font-size: 3rem;
+  cursor: pointer;
+  &:hover {
+    font-size: 4rem;
+  }
 `;
 
-const PopupDiv = styled.div``;
+const PopupDiv = styled.div`
+  & h4 {
+    margin-bottom: 1rem;
+  }
+  & p {
+    color: ${props => props.theme.colors.darkGrey};
+  }
+`;
 
 const SelectionHighlight = styled.div`
   display: flex;
@@ -20,19 +33,30 @@ const SelectionHighlight = styled.div`
   background: ${props => props.theme.colors.white};
 `;
 
-const Map1 = ({ title, mapStyle, height, width }) => {
+const PhoneIcon = styled(FaPhone)`
+  transform: rotate(100deg);
+`;
+
+const Map1 = ({
+  latitude,
+  longitude,
+  title,
+  mapStyle,
+  height,
+  width,
+  data,
+  zoom,
+  selectedHandler,
+  selected,
+}) => {
   const [viewport, setViewport] = useState({
-    latitude: 53,
-    longitude: -113,
+    latitude,
+    longitude,
     width: width,
     height: height,
-    zoom: 4,
+    zoom,
   });
 
-  const [selected, setSelected] = useState(null);
-  const selectedHandler = (e, selected) => {
-    setSelected(selected);
-  };
   return (
     <div>
       {title && (
@@ -43,6 +67,7 @@ const Map1 = ({ title, mapStyle, height, width }) => {
       )}
 
       <ReactMapGL
+        onClick={() => selectedHandler(null)}
         {...viewport}
         mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
         mapStyle={mapStyle}
@@ -51,11 +76,11 @@ const Map1 = ({ title, mapStyle, height, width }) => {
           setViewport(viewport);
         }}
       >
-        {storeLocations.map(location => (
+        {data.map((location, i) => (
           <Marker
-            key={location.name}
-            latitude={location.coordinates.lat}
-            longitude={location.coordinates.long}
+            key={location.title}
+            latitude={location.primaryLocation.lat}
+            longitude={location.primaryLocation.lon}
           >
             <Icon
               onClick={e => {
@@ -66,29 +91,37 @@ const Map1 = ({ title, mapStyle, height, width }) => {
         ))}
         {selected && (
           <Popup
-            latitude={selected.coordinates.lat}
-            longitude={selected.coordinates.long}
-            onClose={() => {
-              setSelected(null);
-            }}
+            latitude={selected.primaryLocation.lat}
+            longitude={selected.primaryLocation.lon}
+            closeButton={true}
+            closeOnClick={false}
+            onClose={() => selectedHandler(null)}
+            anchor="top"
           >
             <PopupDiv>
-              <h4> {selected.name}</h4>
+              <h4> {selected.title}</h4>
+              <p>
+                <PhoneIcon /> {selected.phoneNumber}{' '}
+              </p>
               <p> {selected.address} </p>
+              <ButtonStyle2>Book Now</ButtonStyle2>
             </PopupDiv>
           </Popup>
         )}
       </ReactMapGL>
 
-      {selected && (
-        <SelectionHighlight>
-          <SimpleAlertPrimary>
-            <P>
-              This is the <Bold>{selected.name} </Bold> location
-            </P>
-          </SimpleAlertPrimary>
-        </SelectionHighlight>
-      )}
+      <SelectionHighlight>
+        <SimpleAlertPrimary>
+          <span>
+            <Bold>
+              {' '}
+              {selected
+                ? `${selected.title}`
+                : 'Click map Icon to view location'}{' '}
+            </Bold>
+          </span>
+        </SimpleAlertPrimary>
+      </SelectionHighlight>
     </div>
   );
 };
