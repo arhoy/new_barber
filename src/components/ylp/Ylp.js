@@ -29,7 +29,12 @@ const HeaderTitle = styled.h2`
   font-size: 1.8rem;
 `;
 
-const HeaderButton = styled(ButtonStyle2)``;
+const HeaderButton = styled.p`
+  font-style: italic;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
+`;
 
 const SubContainer1 = styled.div`
   height: 70vh;
@@ -64,7 +69,7 @@ export const Ylp = () => {
       <Header>
         <HeaderTitle> Edmonton's Best Barbers </HeaderTitle>
 
-        <HeaderButton> Show Map </HeaderButton>
+        <HeaderButton> Find Your Barber Today </HeaderButton>
       </Header>
       <SubContainer1>
         {data.map(location => (

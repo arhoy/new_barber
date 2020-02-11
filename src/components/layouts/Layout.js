@@ -55,6 +55,8 @@ const theme = {
 
 const Div = styled.div`
   overflow-x: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns:
     [full-start] 1fr

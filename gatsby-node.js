@@ -15,6 +15,11 @@ exports.createPages = async ({ actions, graphql }) => {
           handle
         }
       }
+      allContentfulYlp {
+        nodes {
+          slug
+        }
+      }
     }
   `);
 
@@ -36,6 +41,18 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve('./src/templates/Shopify/ShopifyProductPage.js'),
       context: {
         handle: item.handle,
+      },
+    });
+  });
+
+  // create barber pages via contentful
+  data.allContentfulYlp.nodes.forEach(item => {
+    console.log('ITEM SLUG IS', item.slug);
+    createPage({
+      path: `barbershop/${item.slug}`,
+      component: path.resolve('./src/templates/Barber.js'),
+      context: {
+        slug: item.slug,
       },
     });
   });

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'gatsby-image';
 import styled from '@emotion/styled';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import renderRating from '../../../helpers/renderRating';
@@ -7,10 +8,15 @@ import renderPriceIcon from '../../../helpers/renderPriceIcon';
 import { A } from '../typography/Typography';
 import { descriptionTruncate } from '../../../helpers/descriptionTruncate';
 
+import { PopUpForm } from '../../forms/PopUpForm';
+import { YlpPopUp } from './YlpPopUp';
+import NoStyleLink from '../../Links/NoStyleLink';
+
 const Container = styled.div`
   display: grid;
 
   padding: 2rem 1rem;
+  padding-bottom: 0rem;
   grid-template-columns: 1fr 5fr;
   grid-gap: 1rem;
   &:hover {
@@ -44,10 +50,10 @@ const Title = styled.h3`
   font-size: 2rem;
 `;
 
-const Picture = styled.div`
+const StyledImage = styled(Image)`
   width: 15rem;
   height: 15rem;
-  background: black;
+
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     width: 100%;
     max-width: 32rem;
@@ -84,7 +90,14 @@ const AddressContainer = styled(ContentContainer)`
 `;
 
 const PriceContainer = styled(ContentContainer)`
+  margin-top: 1rem;
   color: ${props => props.theme.colors.darkGrey};
+`;
+
+const Description = styled(NoStyleLink)`
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const ButtonContainer = styled(ContentContainer)`
@@ -108,32 +121,64 @@ const Icon = styled(FaMapMarkerAlt)`
 `;
 
 const Modal = styled.div`
+  z-index: 10;
   position: fixed;
   top: 0;
   left: 0;
   background: ${props => props.theme.colors.blackTransparent};
   width: 100vw;
   height: 100vh;
-  z-index: 10;
+`;
+
+const PopUpCardDiv = styled.div`
+  z-index: 11;
+  position: absolute;
+
+  padding: 2rem 1rem;
+
+  background: ${props => props.theme.colors.white};
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    width: 100%;
+  }
 `;
 
 export const YlpCard = ({ location }) => {
   const [modal, setModal] = useState(false);
+
   const modalHandler = () => {
-    console.log('Modal Sate', modal);
     setModal(prev => !prev);
   };
   return (
     <>
       {modal && (
-        <Modal onClick={modalHandler}>
-          <div> Call US NOW</div>
-        </Modal>
+        <>
+          <Modal onClick={modalHandler} />
+          <PopUpCardDiv>
+            {location.bookAppointment ? (
+              <PopUpForm
+                background={'white'}
+                color={`black`}
+                title={location.title}
+                rating={location.rating}
+                businessPhoneNumber={location.phoneNumber}
+              />
+            ) : (
+              <YlpPopUp
+                title={location.title}
+                rating={location.rating}
+                businessPhoneNumber={location.phoneNumber}
+              />
+            )}
+          </PopUpCardDiv>
+        </>
       )}
 
       <Container>
         <SubContainer1>
-          <Picture />
+          <StyledImage fluid={location.images[0].fluid} />
         </SubContainer1>
         <SubContainer2>
           <TitleContainer>
@@ -143,9 +188,9 @@ export const YlpCard = ({ location }) => {
             <div>{renderRating(location.rating)}</div>
             <span>{location.phoneNumber}</span>
           </RatingContainer>
-          <ContentContainer>
+          <Description to={`/barbershop/${location.slug}`}>
             {descriptionTruncate(location.description.description, 140)}
-          </ContentContainer>
+          </Description>
 
           <PriceContainer>
             Price:{` `} {renderPriceIcon(location.price)}{' '}

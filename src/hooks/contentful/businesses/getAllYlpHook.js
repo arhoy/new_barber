@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 const GetAllYlpHook = () => {
   const data = useStaticQuery(graphql`
     {
-      allItems: allContentfulYlp {
+      allItems: allContentfulYlp(sort: { fields: rating, order: DESC }) {
         nodes {
           id
           title
@@ -11,6 +11,12 @@ const GetAllYlpHook = () => {
           description {
             description
           }
+          images {
+            fluid {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
+          bookAppointment
           city
           address
           phoneNumber
