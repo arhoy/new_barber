@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import renderRating from '../../../helpers/renderRating';
+import { A } from '../typography/Typography';
 
 const Container = styled.div`
     background: ${props => props.theme.colors.white}'
@@ -23,8 +24,9 @@ const FormRatingContainer = styled(FormContent)`
   color: ${props => props.theme.colors.primary};
 `;
 
-const FormPhoneNumber = styled(FormContent)`
-  color: ${props => props.theme.colors.darkGrey};
+const FormPhoneNumber = styled(A)`
+  color: ${props => props.theme.colors.primaryDark};
+  margin-bottom: 2rem;
 `;
 
 export const YlpPopUp = ({ title, rating, businessPhoneNumber }) => {
@@ -39,7 +41,9 @@ export const YlpPopUp = ({ title, rating, businessPhoneNumber }) => {
           {` Call ${title}  Today to book your appointment`}
         </FormContent>
 
-        <FormPhoneNumber>{businessPhoneNumber}</FormPhoneNumber>
+        <FormPhoneNumber href={`tel:${businessPhoneNumber}`}>
+          {businessPhoneNumber}
+        </FormPhoneNumber>
       </FormHeader>
     </Container>
   );

@@ -5,9 +5,13 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { SimpleAlertPrimary } from '../reusableStyles/alerts/SimpleAlerts';
-import { Bold, P } from '../reusableStyles/typography/Typography';
+import { Bold, P, A } from '../reusableStyles/typography/Typography';
 import { CustomH2 } from '../home/HomeStyling';
 import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
+import { PopUpForm } from '../forms/PopUpForm';
+import PopUpCardDiv from '../reusableStyles/cards/PopUpCardDiv';
+import { YlpPopUp } from '../reusableStyles/cards/YlpPopUp';
+import Modal from '../reusableStyles/modals/Modal';
 
 const Icon = styled(FaMapMarkerAlt)`
   color: ${props => props.theme.colors.primary};
@@ -23,6 +27,9 @@ const PopupDiv = styled.div`
     margin-bottom: 1rem;
   }
   & p {
+    color: ${props => props.theme.colors.darkGrey};
+  }
+  ${A} {
     color: ${props => props.theme.colors.darkGrey};
   }
 `;
@@ -57,72 +64,105 @@ const Map1 = ({
     zoom,
   });
 
+  const [modal, setModal] = useState(false);
+
+  const modalHandler = () => {
+    setModal(prev => !prev);
+  };
+
   return (
-    <div>
-      {title && (
+    <>
+      {modal && (
         <>
-          <CustomH2>{title}</CustomH2>
-          <P> {selected ? `${selected.name}` : `Select Location`}</P>
+          <Modal onClick={modalHandler} />
+          <PopUpCardDiv>
+            {selected.bookAppointment ? (
+              <PopUpForm
+                background={'white'}
+                color={`black`}
+                title={selected.title}
+                rating={selected.rating}
+                businessPhoneNumber={selected.phoneNumber}
+              />
+            ) : (
+              <YlpPopUp
+                title={selected.title}
+                rating={selected.rating}
+                businessPhoneNumber={selected.phoneNumber}
+              />
+            )}
+          </PopUpCardDiv>
         </>
       )}
-
-      <ReactMapGL
-        onClick={() => selectedHandler(null)}
-        {...viewport}
-        mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
-        mapStyle={mapStyle}
-        scrollZoom={true}
-        onViewportChange={viewport => {
-          setViewport(viewport);
-        }}
-      >
-        {data.map((location, i) => (
-          <Marker
-            key={location.title}
-            latitude={location.primaryLocation.lat}
-            longitude={location.primaryLocation.lon}
-          >
-            <Icon
-              onClick={e => {
-                selectedHandler(e, location);
-              }}
-            />
-          </Marker>
-        ))}
-        {selected && (
-          <Popup
-            latitude={selected.primaryLocation.lat}
-            longitude={selected.primaryLocation.lon}
-            closeButton={true}
-            closeOnClick={false}
-            onClose={() => selectedHandler(null)}
-            anchor="top"
-          >
-            <PopupDiv>
-              <h4> {selected.title}</h4>
-              <p>
-                <PhoneIcon /> {selected.phoneNumber}{' '}
-              </p>
-              <p> {selected.address} </p>
-              <ButtonStyle2>Book Now</ButtonStyle2>
-            </PopupDiv>
-          </Popup>
+      <div>
+        {title && (
+          <>
+            <CustomH2>{title}</CustomH2>
+            <P> {selected ? `${selected.name}` : `Select Location`}</P>
+          </>
         )}
-      </ReactMapGL>
 
-      <SelectionHighlight>
-        <SimpleAlertPrimary>
-          <span>
-            <Bold>
-              {' '}
-              {selected
-                ? `${selected.title}`
-                : 'Click map Icon to view location'}{' '}
-            </Bold>
-          </span>
-        </SimpleAlertPrimary>
-      </SelectionHighlight>
-    </div>
+        <ReactMapGL
+          onClick={() => selectedHandler(null)}
+          {...viewport}
+          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_API_TOKEN}
+          mapStyle={mapStyle}
+          scrollZoom={true}
+          onViewportChange={viewport => {
+            setViewport(viewport);
+          }}
+        >
+          {data.map((location, i) => (
+            <Marker
+              key={location.title}
+              latitude={location.primaryLocation.lat}
+              longitude={location.primaryLocation.lon}
+            >
+              <Icon
+                onClick={e => {
+                  selectedHandler(e, location);
+                }}
+              />
+            </Marker>
+          ))}
+          {selected && (
+            <Popup
+              latitude={selected.primaryLocation.lat}
+              longitude={selected.primaryLocation.lon}
+              closeButton={true}
+              closeOnClick={false}
+              onClose={() => selectedHandler(null)}
+              anchor="top"
+            >
+              <PopupDiv>
+                <h4> {selected.title}</h4>
+                <p>
+                  <PhoneIcon />{' '}
+                  <A href={`tel:${selected.phoneNumber}`}>
+                    {selected.phoneNumber}
+                  </A>
+                </p>
+                <p> {selected.address} </p>
+                <ButtonStyle2 onClick={modalHandler}>Book Now</ButtonStyle2>
+              </PopupDiv>
+            </Popup>
+          )}
+        </ReactMapGL>
+
+        <SelectionHighlight>
+          <SimpleAlertPrimary>
+            <span>
+              <Bold>
+                {' '}
+                {selected
+                  ? `${selected.title}`
+                  : 'Click map Icon to view location'}{' '}
+              </Bold>
+            </span>
+          </SimpleAlertPrimary>
+        </SelectionHighlight>
+      </div>
+    </>
   );
 };
 

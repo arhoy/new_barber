@@ -45,6 +45,15 @@ module.exports = {
         display: 'swap',
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        custom: {
+          families: ['Parlour-Regular'],
+          urls: ['/fonts/fonts.css'],
+        },
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-prefetch-google-fonts`,
     //   options: {

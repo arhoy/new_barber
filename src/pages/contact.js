@@ -1,28 +1,104 @@
 import React from 'react';
+import styled from '@emotion/styled';
 
+import BackgroundImage from 'gatsby-background-image';
 import Layout from '../components/layouts/Layout';
+import { graphql } from 'gatsby';
 
 import { H1, P } from '../components/reusableStyles/typography/Typography.js';
 
 import {
   Section,
-  Container800,
+  SectionGrey,
 } from '../components/reusableStyles/sections/Sections.js';
-import { NetlifyFormV2 } from '../components/forms/NetlifyFormV2';
 
-const contact = () => {
+import { ContactCard } from '../components/reusableStyles/cards/ContactCard';
+
+import { SimpleNetlifyForm } from '../components/forms/SimpleNetlifyForm';
+
+const SectionCustom = styled(SectionGrey)`
+  background: rgba(235, 229, 229, 0);
+  margin-top: -4rem;
+  padding-top: 0;
+`;
+
+const WhiteSection = styled(Section)`
+  background: ${props => props.theme.colors.white};
+`;
+
+const HeroBackgroundImage = styled(BackgroundImage)`
+  min-height: ${props => (props.home ? 'calc(100vh - 62px)' : '40vh')};
+
+  background: ${props =>
+    props.home
+      ? 'linear-gradient(rgba(96, 80, 233, 0.7), rgb(235, 229, 229))'
+      : 'linear-gradient(to right bottom, rgba(162, 245, 250,0.5),rgb(235, 229, 229))'};
+  background-position: center;
+  background-size: cover;
+  opacity: 1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SubDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+`;
+
+const Title = styled(H1)`
+  color: ${props => props.theme.colors.black};
+  font-weight: bold;
+`;
+
+export const query = graphql`
+  {
+    picture1: file(relativePath: { eq: "contact.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1000) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`;
+
+const contact = ({ data }) => {
   return (
     <Layout>
-      <Section>
-        <Container800>
-          <H1>Contact Us</H1>
+      <HeroBackgroundImage fluid={data.picture1.childImageSharp.fluid}>
+        <SubDiv>
+          <Title>Get In Touch</Title>
           <P>
-            Please contact us if you have any questions. New Barber is dedicated
-            to finding and listing the best barber locations in Edmonton
+            {' '}
+            Want to contact us? We'd love to hear from you. Here's how you can
+            reach us...
           </P>
+        </SubDiv>
+      </HeroBackgroundImage>
 
-          <NetlifyFormV2 background="#EAEDED" color="black" />
-        </Container800>
+      <SectionCustom>
+        <ContactCard
+          title1={'Talk To A Rep'}
+          title2={`Like Us on Facebook`}
+          blurb1={`Interested in listing a barber shop, need help with an online order or got site suggestions? Drop Us a line below or talk to a customer service representative`}
+          blurb2={`Visit our communities on Facebook. Or like our Facebook page below`}
+          link={`https://www.facebook.com/Aquasar-Web-Development-111600506937750/?modal=admin_todo_tour`}
+          linkText={`View Facebook Page`}
+          phoneNumber={`587-772-5536`}
+          phoneNumberDisplay={`587.772.5536`}
+          email={`community@bluequillapartments.ca`}
+          address={`11615 28 Ave NW, Edmonton, AB T6J 4G2`}
+        />
+      </SectionCustom>
+
+      <Section>
+        <WhiteSection>
+          <SimpleNetlifyForm />
+        </WhiteSection>
       </Section>
     </Layout>
   );

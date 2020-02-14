@@ -4,10 +4,9 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 import Map1 from '../mapbox/Map1';
-import { ButtonStyle2 } from '../reusableStyles/buttons/Button';
+
 import GetAllYlpHook from '../../hooks/contentful/businesses/getAllYlpHook';
 import { YlpCard } from '../reusableStyles/cards/YlpCard';
-import Banner from '../reusableStyles/banner/Banner';
 
 const Container = styled.div`
   display: grid;
@@ -15,7 +14,7 @@ const Container = styled.div`
 `;
 
 const SubContainer1 = styled.div`
-  height: 79vh;
+  height: 78vh;
   overflow-y: scroll;
   grid-column: 1/2;
 
@@ -27,7 +26,8 @@ const SubContainer1 = styled.div`
 `;
 
 const SubContainer2 = styled.div`
-  height: 75vh;
+  height: 78vh;
+  overflow-y: hidden;
   background: ${props => props.theme.colors.lightgrey};
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     display: none;
@@ -60,7 +60,7 @@ export const Ylp = () => {
           data={data}
           mapStyle="mapbox://styles/arhoy/ck5n2qqyf0i0v1inwxwapkl7c"
           width="100%"
-          height="76vh"
+          height="75vh"
           zoom={10}
           latitude={53.5461}
           longitude={-113.4938}

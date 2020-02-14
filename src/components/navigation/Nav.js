@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { Link } from 'gatsby';
-
 import { FaAlignRight } from 'react-icons/fa';
 
 import styled from '@emotion/styled';
@@ -41,17 +39,20 @@ const Logo = styled.div`
   padding: 0;
   margin: 0;
 `;
-const LogoLink = styled(Link)`
+const LogoLink = styled(NoStyleLink)`
   color: ${props => props.theme.colors.black};
-  font-size: 2.7rem;
+  letter-spacing: 2px;
+  font-size: 3.6rem;
   padding: 0;
   margin: 0;
-
+  font-family: 'Parlour-Regular';
   text-decoration: none !important;
 
   & span {
-    font-size: 3.6rem;
+    font-size: 6.1rem;
     display: inline;
+    color: red;
+    font-family: 'Parlour-Regular';
   }
 `;
 

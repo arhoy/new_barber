@@ -11,6 +11,8 @@ import { descriptionTruncate } from '../../../helpers/descriptionTruncate';
 import { PopUpForm } from '../../forms/PopUpForm';
 import { YlpPopUp } from './YlpPopUp';
 import NoStyleLink from '../../Links/NoStyleLink';
+import PopUpCardDiv from './PopUpCardDiv';
+import Modal from '../modals/Modal';
 
 const Container = styled.div`
   display: grid;
@@ -28,6 +30,13 @@ const Container = styled.div`
 
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
     grid-template-columns: 1fr;
+  }
+
+  & ${A} {
+    color: ${props => props.theme.colors.darkGrey};
+    &:hover {
+      color: ${props => props.theme.colors.black};
+    }
   }
 `;
 
@@ -80,13 +89,6 @@ const RatingContainer = styled(ContentContainer)`
 
 const AddressContainer = styled(ContentContainer)`
   color: ${props => props.theme.colors.darkGrey};
-
-  & ${A} {
-    color: ${props => props.theme.colors.darkGrey};
-    &:hover {
-      color: ${props => props.theme.colors.black};
-    }
-  }
 `;
 
 const PriceContainer = styled(ContentContainer)`
@@ -118,31 +120,6 @@ const ButtonContainer = styled(ContentContainer)`
 
 const Icon = styled(FaMapMarkerAlt)`
   color: ${props => props.theme.colors.primary};
-`;
-
-const Modal = styled.div`
-  z-index: 10;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: ${props => props.theme.colors.blackTransparent};
-  width: 100vw;
-  height: 100vh;
-`;
-
-const PopUpCardDiv = styled.div`
-  z-index: 11;
-  position: absolute;
-
-  padding: 2rem 1rem;
-
-  background: ${props => props.theme.colors.white};
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    width: 100%;
-  }
 `;
 
 export const YlpCard = ({ location }) => {
@@ -186,7 +163,7 @@ export const YlpCard = ({ location }) => {
           </TitleContainer>
           <RatingContainer>
             <div>{renderRating(location.rating)}</div>
-            <span>{location.phoneNumber}</span>
+            <A href={`tel:${location.phoneNumber}`}>{location.phoneNumber}</A>
           </RatingContainer>
           <Description to={`/barbershop/${location.slug}`}>
             {descriptionTruncate(location.description.description, 140)}

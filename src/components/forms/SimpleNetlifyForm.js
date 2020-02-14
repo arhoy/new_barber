@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { navigate } from 'gatsby-link';
 
 import { ButtonStyle1 } from '../reusableStyles/buttons/Button';
+import { H2Centered } from '../reusableStyles/typography/Typography';
 
 // Function to Make Netlify Submission and Gatsby Work
 function encode(data) {
@@ -70,64 +71,67 @@ const SimpleNetlifyForm = ({ color }) => {
   };
 
   return (
-    <Form
-      name="contact-1-simple"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      action="/thank-you/"
-      onSubmit={handleSubmit}
-    >
-      <Field className="hidden">
-        <Label className="hidden">
-          Hidden Honey Bot Spam Field: <input name="bot-field" />
-        </Label>
-      </Field>
-      <Field>
-        <Label>
-          Your Name:
-          <Input
-            onChange={event => setName(event.target.value)}
-            placeholder="What is your given name"
-            style={{ background: `${color}` }}
-            type="text"
-            name="name"
-            required
-          />
-        </Label>
-      </Field>
-      <Field>
-        <Label>
-          Your Email:
-          <Input
-            style={{ background: `${color}` }}
-            onChange={event => setEmail(event.target.value)}
-            placeholder="What is your email"
-            type="email"
-            name="email"
-            required
-          />
-        </Label>
-      </Field>
+    <>
+      <H2Centered> Drop Us A Line </H2Centered>
+      <Form
+        name="contact-1-simple"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thank-you/"
+        onSubmit={handleSubmit}
+      >
+        <Field className="hidden">
+          <Label className="hidden">
+            Hidden Honey Bot Spam Field: <input name="bot-field" />
+          </Label>
+        </Field>
+        <Field>
+          <Label>
+            Your Name:
+            <Input
+              onChange={event => setName(event.target.value)}
+              placeholder="What is your given name"
+              style={{ background: `${color}` }}
+              type="text"
+              name="name"
+              required
+            />
+          </Label>
+        </Field>
+        <Field>
+          <Label>
+            Your Email:
+            <Input
+              style={{ background: `${color}` }}
+              onChange={event => setEmail(event.target.value)}
+              placeholder="What is your email"
+              type="email"
+              name="email"
+              required
+            />
+          </Label>
+        </Field>
 
-      <Field>
-        <Label>
-          Message:
-          <TextArea
-            style={{ background: `${color}` }}
-            onChange={event => setMessage(event.target.value)}
-            placeholder="Please enter a brief message"
-            name="message"
-            required
-            minLength="10"
-            maxLength="1000"
-          />
-        </Label>
-      </Field>
-      <Field>
-        <ButtonStyle1 type="submit">Send</ButtonStyle1>
-      </Field>
-    </Form>
+        <Field>
+          <Label>
+            Message:
+            <TextArea
+              style={{ background: `${color}` }}
+              onChange={event => setMessage(event.target.value)}
+              placeholder="Please enter a brief message"
+              name="message"
+              required
+              minLength="10"
+              maxLength="1000"
+            />
+          </Label>
+        </Field>
+        <Field>
+          <ButtonStyle1 type="submit">Send</ButtonStyle1>
+        </Field>
+      </Form>
+    </>
   );
 };
 

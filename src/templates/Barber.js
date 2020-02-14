@@ -12,6 +12,9 @@ import renderRating from '../helpers/renderRating';
 import { A } from '../components/reusableStyles/typography/Typography';
 import { YlpPopUp } from '../components/reusableStyles/cards/YlpPopUp';
 import { PopUpForm } from '../components/forms/PopUpForm';
+import SEO from '../hooks/SEO';
+import Modal from '../components/reusableStyles/modals/Modal';
+import PopUpCardDiv from '../components/reusableStyles/cards/PopUpCardDiv';
 
 // run template query
 export const query = graphql`
@@ -45,12 +48,10 @@ export const query = graphql`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 6fr 5fr;
-  overflow-y: scroll;
+
   overflow-x: hidden;
 
   background: ${props => props.theme.colors.primary};
-  min-height: 50rem;
-  max-height: 74rem;
 `;
 
 const Header = styled.div`
@@ -154,31 +155,6 @@ const Icon = styled(FaMapMarkerAlt)`
   color: ${props => props.theme.colors.primary};
 `;
 
-const Modal = styled.div`
-  z-index: 10;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: ${props => props.theme.colors.blackTransparent};
-  width: 100vw;
-  height: 100vh;
-`;
-
-const PopUpCardDiv = styled.div`
-  z-index: 11;
-  position: absolute;
-
-  padding: 2rem 1rem;
-
-  background: ${props => props.theme.colors.white};
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
-    width: 100%;
-  }
-`;
-
 const Barber = ({ data: { barber } }) => {
   const [modal, setModal] = useState(false);
 
@@ -187,6 +163,10 @@ const Barber = ({ data: { barber } }) => {
   };
   return (
     <Layout>
+      <SEO
+        title={`New Barber | ${barber.title}`}
+        description={`${barber.description.description}`}
+      />
       {modal && (
         <>
           <Modal onClick={modalHandler} />
