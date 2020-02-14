@@ -81,7 +81,7 @@ const CustomLink = styled(NoStyleLink)`
   padding: 1rem;
   margin: 1rem;
   & :hover {
-    background: ${props => props.theme.colors.primaryLight};
+    background: ${props => props.theme.colors.lightgrey};
   }
 `;
 

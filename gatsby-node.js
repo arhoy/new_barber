@@ -10,11 +10,13 @@ exports.createPages = async ({ actions, graphql }) => {
           slug
         }
       }
+
       allShopifyProduct {
         nodes {
           handle
         }
       }
+
       allContentfulYlp {
         nodes {
           slug

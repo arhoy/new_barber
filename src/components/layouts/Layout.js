@@ -20,7 +20,7 @@ const theme = {
   colors: {
     primary: 'rgb(252, 69, 53)',
     primaryDark: 'rgb(219, 18, 0)',
-    primaryLight: 'rgb(255, 124, 112)',
+    primaryLight: 'rgb(254, 230, 230)',
     primaryVeryLight: 'rgb(253, 229, 179)',
     primaryTransparent: 'rgb(220,128,37,0.10)',
     secondary: 'rgb(24, 163, 201)',
@@ -98,7 +98,7 @@ const MainFull = styled.main`
 `;
 
 const Layout = ({ children, full }) => {
-  const bodyColor = 'rgb(255, 255, 255)';
+  const bodyColor = 'rgb(242, 242, 242)';
 
   return (
     <ContextProvider>

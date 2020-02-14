@@ -5,12 +5,17 @@ import { graphql } from 'gatsby';
 import ProductTemplate from '../../components/shopify/product/ProductTemplate';
 
 import Layout from '../../components/layouts/Layout';
+import Banner from '../../components/reusableStyles/banner/Banner';
 
 const ShopifyProductPage = ({ data, images, imageId }) => {
   const product = data.shopifyProduct;
 
   return (
     <Layout>
+      <Banner
+        main={`The Barber Shop`}
+        secondary={`Find your Barber Products`}
+      />
       <ProductTemplate product={product} />
     </Layout>
   );

@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import StoreContext from '../../../context/StoreContext';
+import NoStyleLink from '../../Links/NoStyleLink';
 
 const Grid = styled.div`
-  background: ${props => props.theme.colors.primaryLight};
-  min-height: 60vh;
+  background: ${props => props.theme.colors.white};
+  height: 80vh;
   display: grid;
+  overflow-y: scroll;
 
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   @media (max-width: ${props => props.theme.screenSize.mobileL}) {
@@ -16,7 +18,7 @@ const Grid = styled.div`
   }
 `;
 
-const Product = styled.div`
+const Product = styled(NoStyleLink)`
   padding: 1rem;
   margin: 1rem;
   display: flex;
@@ -27,13 +29,17 @@ const Product = styled.div`
 `;
 
 const Title = styled.span`
-  font-weight: 100;
+  font-weight: 400;
   font-size: 1.4rem;
   text-align: center;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
 
 const PriceTag = styled.span`
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   text-align: center;
   margin-top: 1rem;
   color: ${props => props.theme.colors.primaryDark};
@@ -103,15 +109,14 @@ const ProductGrid = () => {
               variants: [firstVariant],
             },
           }) => (
-            <Product key={id}>
-              <Link to={`/product/${handle}/`}>
-                {firstImage && firstImage.localFile && (
-                  <Img
-                    src={firstImage.localFile.childImageSharp.fluid.src}
-                    alt={handle}
-                  />
-                )}
-              </Link>
+            <Product to={`/product/${handle}`} key={id}>
+              {firstImage && firstImage.localFile && (
+                <Img
+                  src={firstImage.localFile.childImageSharp.fluid.src}
+                  alt={handle}
+                />
+              )}
+
               <Title>{title}</Title>
               <PriceTag>{getPrice(firstVariant.price)}</PriceTag>
             </Product>

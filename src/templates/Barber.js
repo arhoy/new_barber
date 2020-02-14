@@ -45,9 +45,12 @@ export const query = graphql`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 6fr 5fr;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   background: ${props => props.theme.colors.primary};
   min-height: 50rem;
+  max-height: 74rem;
 `;
 
 const Header = styled.div`

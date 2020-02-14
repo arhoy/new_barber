@@ -2,31 +2,34 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-const Div = styled.div`
-  text-align: center;
+const Header = styled.div`
+  grid-column: 1/-1;
+  row: 1/2;
+  background: ${props => props.theme.colors.lightgrey};
+  display: flex;
+  padding: 1rem 0;
+  align-items: center;
+  justify-content: space-around;
 `;
 
-const H1 = styled.h1`
-  font-size: 4rem;
-  color: ${props => props.theme.colors.primaryLight};
-  margin-bottom: 1rem;
-  line-height: 3.5rem;
+const HeaderTitle = styled.h2`
+  font-size: 1.8rem;
 `;
 
-const P = styled.p`
-  width: 85%;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  color: ${props => props.theme.colors.lightgrey};
+const HeaderButton = styled.p`
+  font-style: italic;
+  @media (max-width: ${props => props.theme.screenSize.mobileL}) {
+    display: none;
+  }
 `;
 
-const Banner = ({ title, info, children }) => {
+const Banner = ({ main, secondary }) => {
   return (
-    <Div>
-      <H1>{title}</H1>
-      <P>{info}</P>
-      {children}
-    </Div>
+    <Header>
+      <HeaderTitle> {main} </HeaderTitle>
+
+      <HeaderButton> {secondary} </HeaderButton>
+    </Header>
   );
 };
 

@@ -16,8 +16,10 @@ import { ProductOptions } from './ProductOptions';
 import { H2 } from '../../reusableStyles/typography/Typography';
 
 const Container = styled.div`
+  background: ${props => props.theme.colors.white};
   display: grid;
-  min-height: 80vh;
+  max-height: 80vh;
+  overflow-y: scroll;
   grid-template-columns: 1fr 1fr;
   @media (max-width: ${props => props.theme.screenSize.eightHundred}) {
     grid-template-columns: 1fr;
@@ -55,8 +57,9 @@ const SubContainer2 = styled.div`
 `;
 
 const ProductTitle = styled(H2)`
+  margin-bottom: 2rem;
   &.mobile {
-    font-size: 3.8rem;
+    font-size: 2.2rem;
   }
   @media (max-width: ${props => props.theme.screenSize.eightHundred}) {
     &.desktop {
@@ -72,6 +75,7 @@ const ProductTitle = styled(H2)`
 
 const PriceContainer = styled.div`
   font-size: 3rem;
+  margin-bottom: 2rem;
   color: ${props => props.theme.colors.primaryDark};
   @media (min-width: ${props => props.theme.screenSize.eightHundred}) {
     &.mobile {
