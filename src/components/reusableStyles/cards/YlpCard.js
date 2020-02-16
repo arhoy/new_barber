@@ -171,10 +171,10 @@ export const YlpCard = ({ location }) => {
           <Description
             to={`/barbershop/${location.slug}`}
             dangerouslySetInnerHTML={{
-              __html: descriptionTruncate(
+              __html: `<div>${descriptionTruncate(
                 location.description.childMarkdownRemark.html,
                 140,
-              ),
+              )}</div>`,
             }}
           />
 
