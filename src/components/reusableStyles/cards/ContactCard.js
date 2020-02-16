@@ -14,9 +14,9 @@ const CustomContainer = styled(Container1200)`
 `;
 
 const Card1 = styled.div`
-  -webkit-box-shadow: inset -16px -23px 22px -10px rgba(240, 240, 240, 0.88);
-  -moz-box-shadow: inset -16px -23px 22px -10px rgba(240, 240, 240, 0.88);
-  box-shadow: inset -16px -23px 22px -10px rgba(240, 240, 240, 0.88);
+  -webkit-box-shadow: inset -16px -23px 22px -10px rgb(255, 255, 255);
+  -moz-box-shadow: inset -16px -23px 22px -10px rgb(255, 255, 255);
+  box-shadow: inset -16px -23px 22px -10px rgb(255, 255, 255);
   z-index: 10;
   padding: 3rem;
   display: flex;
@@ -26,7 +26,7 @@ const Card1 = styled.div`
 
   height: auto;
   text-align: center;
-  background: ${props => props.theme.colors.lightgrey};
+  background: ${props => props.theme.colors.white};
   & h4 {
     text-transform: uppercase;
     font-weight: bold;

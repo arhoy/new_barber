@@ -24,6 +24,9 @@ export const query = graphql`
       slug
       description {
         description
+        childMarkdownRemark {
+          html
+        }
       }
       images {
         fluid {
@@ -52,6 +55,9 @@ const Container = styled.div`
   overflow-x: hidden;
 
   background: ${props => props.theme.colors.primary};
+  & {
+    margin: 2rem;
+  }
 `;
 
 const Header = styled.div`
@@ -202,9 +208,11 @@ const Barber = ({ data: { barber } }) => {
             <span>{barber.phoneNumber}</span>
           </RatingContainer>
 
-          <DescriptionContainer>
-            {barber.description.description}
-          </DescriptionContainer>
+          <DescriptionContainer
+            dangerouslySetInnerHTML={{
+              __html: barber.description.childMarkdownRemark.html,
+            }}
+          />
 
           <PriceContainer>
             Price:{` `} {renderPriceIcon(barber.price)}{' '}

@@ -10,6 +10,9 @@ const GetAllYlpHook = () => {
           slug
           description {
             description
+            childMarkdownRemark {
+              html
+            }
           }
           images {
             fluid {

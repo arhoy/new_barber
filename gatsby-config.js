@@ -39,6 +39,9 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-transformer-remark`,
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [`Roboto\:100,300,500,700`, `Helvetica\:100,300,500,700`],

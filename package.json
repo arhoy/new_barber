@@ -49,6 +49,7 @@
     "gatsby-source-instagram": "^0.5.1",
     "gatsby-source-shopify": "^3.0.41",
     "gatsby-source-stripe": "^3.0.4",
+    "gatsby-transformer-remark": "^2.6.51",
     "gatsby-transformer-sharp": "^2.2.19",
     "lodash": "^4.17.15",
     "netlify-identity-widget": "^1.5.5",

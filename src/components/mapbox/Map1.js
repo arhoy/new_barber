@@ -15,10 +15,12 @@ import Modal from '../reusableStyles/modals/Modal';
 
 const Icon = styled(FaMapMarkerAlt)`
   color: ${props => props.theme.colors.primary};
-  font-size: 3rem;
+  opacity: 0.7;
+  font-size: 2.3rem;
   cursor: pointer;
   &:hover {
-    font-size: 4rem;
+    color: ${props => props.theme.colors.black};
+    opacity: 1;
   }
 `;
 
@@ -115,8 +117,12 @@ const Map1 = ({
           {data.map((location, i) => (
             <Marker
               key={location.title}
-              latitude={location.primaryLocation.lat}
-              longitude={location.primaryLocation.lon}
+              latitude={
+                location.primaryLocation && location.primaryLocation.lat
+              }
+              longitude={
+                location.primaryLocation && location.primaryLocation.lon
+              }
             >
               <Icon
                 onClick={e => {

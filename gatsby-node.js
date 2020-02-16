@@ -49,7 +49,6 @@ exports.createPages = async ({ actions, graphql }) => {
 
   // create barber pages via contentful
   data.allContentfulYlp.nodes.forEach(item => {
-    console.log('ITEM SLUG IS', item.slug);
     createPage({
       path: `barbershop/${item.slug}`,
       component: path.resolve('./src/templates/Barber.js'),

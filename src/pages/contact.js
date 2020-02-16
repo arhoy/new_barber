@@ -20,6 +20,8 @@ const SectionCustom = styled(SectionGrey)`
   background: rgba(235, 229, 229, 0);
   margin-top: -4rem;
   padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: -4rem;
 `;
 
 const WhiteSection = styled(Section)`

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'gatsby-image';
 import styled from '@emotion/styled';
+
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import renderRating from '../../../helpers/renderRating';
 import { ButtonStyle2 } from '../buttons/Button';
@@ -97,6 +98,8 @@ const PriceContainer = styled(ContentContainer)`
 `;
 
 const Description = styled(NoStyleLink)`
+  font-weight: 400;
+  font-size: 1.5rem;
   &:hover {
     text-decoration: underline;
   }
@@ -165,9 +168,15 @@ export const YlpCard = ({ location }) => {
             <div>{renderRating(location.rating)}</div>
             <A href={`tel:${location.phoneNumber}`}>{location.phoneNumber}</A>
           </RatingContainer>
-          <Description to={`/barbershop/${location.slug}`}>
-            {descriptionTruncate(location.description.description, 140)}
-          </Description>
+          <Description
+            to={`/barbershop/${location.slug}`}
+            dangerouslySetInnerHTML={{
+              __html: descriptionTruncate(
+                location.description.childMarkdownRemark.html,
+                140,
+              ),
+            }}
+          />
 
           <PriceContainer>
             Price:{` `} {renderPriceIcon(location.price)}{' '}
@@ -179,7 +188,9 @@ export const YlpCard = ({ location }) => {
               <A
                 target="_blank"
                 rel="noopener nofollow"
-                href={`https://www.google.com/maps/search/?api=1&query=${location.primaryLocation.lat},${location.primaryLocation.lon}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${location.primaryLocation &&
+                  location.primaryLocation.lat},${location.primaryLocation &&
+                  location.primaryLocation.lon}`}
               >
                 {' '}
                 {location.address}
