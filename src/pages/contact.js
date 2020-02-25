@@ -77,7 +77,7 @@ const contact = ({ data }) => {
           <P>
             {' '}
             Want to contact us? We'd love to hear from you. Here's how you can
-            reach us...
+            reach us!
           </P>
         </SubDiv>
       </HeroBackgroundImage>
