@@ -9,7 +9,7 @@ const IndexPage = () => {
     <Layout>
       <SEO
         title="Edmonton Barbers | Find the Best Barber in Edmonton Nearest You"
-        description="Edmonton Barbershop Finder. Find the Best Barbershop in Edmonton. Find your local barber and book online. Get A free barber website. Call Today for more info!"
+        description="Edmonton Barbershop Finder. Find the Best Barbershop in Edmonton. Find your local barber and book online. Get A free barber website. Barber haircuts and skin fades. Call Today for more info!"
       />
       <Banner
         main={` Edmonton's Best Barbers `}

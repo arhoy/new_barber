@@ -14,11 +14,11 @@ const queries = require('./src/utils/algolia');
 
 module.exports = {
   siteMetadata: {
-    title: 'New Barber',
-    description: `Find the Best Barber in Edmonton`,
+    title: 'New Barber | Edmonton Barber Site',
+    description: `Find the Best Barbershop in Edmonton. Barber haircuts and skin fades. Book Your Barber Appointment Online. Get a Free Barber Website`,
     author: 'Alex Quasar',
-    twitterUsername: '@_dresscode',
-    image: '/default.png',
+    twitterUsername: '@_aquasar',
+    siteImage: '/default.png',
     siteUrl: URL,
   },
   plugins: [
@@ -57,25 +57,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Roboto`,
-    //         subsets: [`100,400,700`],
-    //       },
-    //       {
-    //         family: `Sacramento`,
-    //         variants: [`400`, `700`],
-    //       },
-    //       {
-    //         family: `Montserrat`,
-    //         variants: [`400`, `700`],
-    //       },
-    //     ],
-    //   },
-    // },
 
     {
       resolve: `gatsby-source-filesystem`,
