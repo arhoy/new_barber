@@ -103,7 +103,7 @@ const Nav = () => {
         </Logo>
 
         <NavContainer>
-          <CustomLink to="/">Home </CustomLink>
+          <CustomLink to="/book-appointment">Book Now </CustomLink>
           <CustomLink to="/shop">Shop </CustomLink>
           <CustomLink to="/contact">Contact </CustomLink>
 

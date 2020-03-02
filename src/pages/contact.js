@@ -58,7 +58,7 @@ const Title = styled(H1)`
 
 export const query = graphql`
   {
-    picture1: file(relativePath: { eq: "contact.jpg" }) {
+    picture1: file(relativePath: { eq: "hero.png" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1000) {
           ...GatsbyImageSharpFluid_tracedSVG

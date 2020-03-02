@@ -32,8 +32,8 @@ const NavShopify = () => {
   return (
     <Container>
       <Promo>
-        <p className="desktop">Edmonton Barber Website | Find Your Barber</p>
-        <p className="mobile">Edmonton Barber Site</p>
+        <p className="desktop">Get Free Barber Website with Hosting Call Now</p>
+        <p className="mobile">Free Barber Site! Call Now</p>
       </Promo>
       <ShopifyCartButton text1={`CART`} text2={`CART`} />
     </Container>
