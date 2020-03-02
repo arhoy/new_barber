@@ -64,4 +64,45 @@ const ButtonStyle2Large = styled(ButtonStyle2)`
   font-size: 2rem;
 `;
 
-export { ButtonStyle1, ButtonStyle2, ButtonStyle2Large, ButtonStyle3 };
+const ButtonShutterOutH = styled.button`
+  position: relative;
+  cursor: pointer;
+  color: ${props => props.theme.colors.black};
+  background: ${props => props.theme.colors.white};
+  border: none;
+  outline: none;
+
+  font-weight: bold;
+  padding: 1rem 2rem;
+  width: 100%;
+  z-index: 1;
+  &:before {
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: ${props => props.theme.colors.white};
+    background: ${props => props.theme.colors.black};
+
+    position: absolute;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 50%;
+    transition: 0.3s;
+  }
+  &:hover {
+    color: ${props => props.theme.colors.white};
+    &:before {
+      transform: scaleX(1);
+    }
+  }
+`;
+
+export {
+  ButtonStyle1,
+  ButtonStyle2,
+  ButtonStyle2Large,
+  ButtonStyle3,
+  ButtonShutterOutH,
+};

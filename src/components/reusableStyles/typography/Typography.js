@@ -88,7 +88,7 @@ const PBasic = styled.p`
 `;
 
 const BlockQuote = styled.blockquote`
-  color: red;
+  color: ${props => props.theme.colors.red};
 `;
 
 export {

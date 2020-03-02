@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { gsap } from 'gsap';
+
 import {
   FaPhone,
   FaMapMarkerAlt,
@@ -8,7 +10,8 @@ import {
 } from 'react-icons/fa';
 
 import { IoIosCar } from 'react-icons/io';
-import { ButtonStyle2Large } from '../reusableStyles/buttons/Button';
+import { ButtonShutterOutH } from '../reusableStyles/buttons/Button';
+import { A } from '../reusableStyles/typography/Typography';
 
 const Container = styled.div`
   font-size: 1.6rem;
@@ -30,8 +33,8 @@ const Container = styled.div`
 
 const Logo = styled.div`
   background: ${props => props.theme.colors.white};
-  width: 10rem;
-  height: 10rem;
+  width: 14rem;
+  height: 14rem;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -39,9 +42,14 @@ const Logo = styled.div`
   align-items: center;
   font-weight: bold;
   & h1 {
-    font-size: 3rem;
+    border-bottom: 1px solid ${props => props.theme.colors.black};
+    & span {
+      font-size: 3rem;
+    }
   }
   & span {
+    text-transform: uppercase;
+    margin-top: 4px;
     font-size: 1rem;
     font-weight: bold;
   }
@@ -99,18 +107,48 @@ const TextSocial = styled.div`
   margin-bottom: 2rem;
 `;
 
-const CustomButton = styled(ButtonStyle2Large)`
-  &:hover {
-    background: ${props => props.theme.colors.black};
-  }
+const CustomButton = styled(ButtonShutterOutH)`
+  text-transform: uppercase;
 `;
 
 const HeroBookAppointment = () => {
+  useEffect(() => {
+    const master = new gsap.timeline({});
+
+    function logoAnimation() {
+      const tl = new gsap.timeline();
+      tl.to('.logo', 3, { rotateY: 1440, ease: 'power4.out' });
+      tl.staggerFrom(
+        '.textContainer .mainText',
+        1.1,
+        { y: -50, opacity: 0, ease: 'power1.inOut' },
+        0.1,
+      );
+      return tl;
+    }
+
+    master.add(logoAnimation());
+  }, []);
   return (
     <Container>
-      <Logo>
-        <h1>A&Q</h1>
-        <span>Barbershop</span>
+      <Logo className="logo">
+        <h1 className="textContainer">
+          <span className="mainText">A</span>
+          <span className="mainText">&</span>
+          <span className="mainText">Q</span>
+        </h1>
+        <div className="textContainer">
+          <span className="mainText">B</span>
+          <span className="mainText">A</span>
+          <span className="mainText">R</span>
+          <span className="mainText">B</span>
+          <span className="mainText">E</span>
+          <span className="mainText">R</span>
+          <span className="mainText">S</span>
+          <span className="mainText">H</span>
+          <span className="mainText">O</span>
+          <span className="mainText">P</span>
+        </div>
       </Logo>
       <TextContainer>
         <Text>
@@ -140,7 +178,23 @@ const HeroBookAppointment = () => {
           <InstagramIcon />
         </TextSocial>
       </TextContainer>
-      <CustomButton>Book Now</CustomButton>
+
+      <A
+        href="https://www.fresha.com/aquasar-inc-ieh5o2ib/booking"
+        rel="noreferrer noopener nofollow"
+      >
+        <CustomButton className="textContainer">
+          <span className="mainText">B</span>
+          <span className="mainText">O</span>
+          <span className="mainText">O</span>
+          <span className="mainText">K</span>
+          <span style={{ marginLeft: '8px' }} className="mainText">
+            N
+          </span>
+          <span className="mainText">O</span>
+          <span className="mainText">W</span>
+        </CustomButton>
+      </A>
     </Container>
   );
 };
