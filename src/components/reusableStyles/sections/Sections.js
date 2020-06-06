@@ -1,5 +1,6 @@
 // Emotion Styled Element
 import styled from '@emotion/styled';
+import Wave1SVG from '../../../../images/svg/wave.svg';
 
 const Section = styled.div`
   background-position: 50% 50%;
@@ -9,6 +10,10 @@ const Section = styled.div`
   @media (max-width: ${props => props.theme.screenSize.mobileVS}) {
     padding: 6rem 2rem;
   }
+`;
+
+const SVGSection1 = styled(Section)`
+  background-image: url(${Wave1SVG});
 `;
 
 const SectionPrimary = styled(Section)`
@@ -147,4 +152,5 @@ export {
   ContainerCenterFlex,
   ProductPageTopSection,
   SectionPrimary,
+  SVGSection1,
 };

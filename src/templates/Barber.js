@@ -55,15 +55,21 @@ const Container = styled.div`
   overflow-x: hidden;
 
   background: ${props => props.theme.colors.primary};
-  & {
-    margin: 2rem;
+
+  & .callout {
+    background: ${props => props.theme.colors.primary};
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
   }
 `;
 
 const Header = styled.div`
   grid-column: 1/-1;
   row: 1/2;
-  background: ${props => props.theme.colors.lightgrey};
+  background: ${props => props.theme.colors.white};
   display: flex;
   padding: 1rem 0;
   align-items: center;
@@ -201,6 +207,7 @@ const Barber = ({ data: { barber } }) => {
 
           <HeaderButton> Find Your Barber Today </HeaderButton>
         </Header>
+
         <SubContainer1>
           <Title>{barber.title}</Title>
           <RatingContainer>

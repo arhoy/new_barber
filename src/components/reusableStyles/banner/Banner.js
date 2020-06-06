@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 const Header = styled.div`
   grid-column: 1/-1;
   row: 1/2;
-  background: ${props => props.theme.colors.lightgrey};
+  background: ${props => props.theme.colors.white};
   display: flex;
   padding: 1rem 0;
   align-items: center;

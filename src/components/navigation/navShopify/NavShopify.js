@@ -32,8 +32,11 @@ const NavShopify = () => {
   return (
     <Container>
       <Promo>
-        <p className="desktop">Get Free Barber Website with Hosting Call Now</p>
-        <p className="mobile">Free Barber Site! Call Now</p>
+        <p className="desktop">
+          Get A Free Custom Barber Website Call 587 501 7726
+        </p>
+
+        <p className="mobile">Free Barber Site! Call 587 501 7726</p>
       </Promo>
       <ShopifyCartButton text1={`CART`} text2={`CART`} />
     </Container>

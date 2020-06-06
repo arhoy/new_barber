@@ -15,6 +15,7 @@ const theme = {
     primaryLight: '#f1dfbf',
     primaryVeryLight: 'rgb(253, 229, 179)',
     primaryTransparent: 'rgb(71, 70, 68,0.7)',
+    whiteOpacity: 'rgba(255, 255, 255,0.7)',
     secondary: 'rgb(24, 163, 201)',
     lightgrey: '#F2F2F2',
     lightgrey2: 'rgb(224, 217, 217)',
@@ -113,6 +114,7 @@ const LayoutBooking = ({ children, full }) => {
           body {
             background: ${bodyColor};
             margin: 0;
+            overflow-x: hidden;
             font-family: Montserrat, Helvetica, Arial, sans-serif;
           }
         `}

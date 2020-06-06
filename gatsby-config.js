@@ -136,7 +136,7 @@ module.exports = {
      * plugins. Here the site sources its data from Shopify.
      */
     {
-      resolve: 'gatsby-source-shopify',
+      resolve: 'gatsby-source-shopify2',
       options: {
         // The domain name of your Shopify shop. This is required.
         // Example: 'gatsby-source-shopify-test-shop' if your Shopify address is
@@ -168,7 +168,7 @@ module.exports = {
         // Number of records to fetch on each request when building the cache
         // at startup. If your application encounters timeout errors during
         // startup, try decreasing this number.
-        paginationSize: 250,
+        paginationSize: 1250,
 
         // List of collections you want to fetch.
         // Possible values are: 'shop' and 'content'.

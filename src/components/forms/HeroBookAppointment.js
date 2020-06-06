@@ -163,7 +163,7 @@ const HeroBookAppointment = () => {
         </Text>
         <Text>
           <p>
-            <PhoneIcon /> 587 772 5536
+            <PhoneIcon /> 587-501-7726
           </p>
 
           <p>

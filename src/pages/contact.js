@@ -88,12 +88,12 @@ const contact = ({ data }) => {
           title2={`Like Us on Facebook`}
           blurb1={`Interested in listing a barber shop, need help with an online order or got site suggestions? Drop Us a line below or talk to a customer service representative`}
           blurb2={`Visit our communities on Facebook. Or like our Facebook page below`}
-          link={`https://www.facebook.com/Aquasar-Web-Development-111600506937750/?modal=admin_todo_tour`}
+          link={`https://www.facebook.com/New-Barber-111856007060542/?modal=admin_todo_tour`}
           linkText={`View Facebook Page`}
-          phoneNumber={`587-772-5536`}
-          phoneNumberDisplay={`587.772.5536`}
-          email={`community@bluequillapartments.ca`}
-          address={`11615 28 Ave NW, Edmonton, AB T6J 4G2`}
+          phoneNumber={`587-501-7726`}
+          phoneNumberDisplay={`587.501.7726`}
+          email={`arhoy@ualberta.ca`}
+          address={`11033 127st Edmonton AB`}
         />
       </SectionCustom>
 

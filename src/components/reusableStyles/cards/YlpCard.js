@@ -15,7 +15,7 @@ import NoStyleLink from '../../Links/NoStyleLink';
 import PopUpCardDiv from './PopUpCardDiv';
 import Modal from '../modals/Modal';
 
-const Container = styled.div`
+const Container = styled(NoStyleLink)`
   display: grid;
 
   padding: 2rem 1rem;
@@ -156,7 +156,7 @@ export const YlpCard = ({ location }) => {
         </>
       )}
 
-      <Container>
+      <Container to={`/barbershop/${location.slug}`}>
         <SubContainer1>
           <StyledImage fluid={location.images[0].fluid} />
         </SubContainer1>

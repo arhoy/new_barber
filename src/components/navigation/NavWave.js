@@ -12,7 +12,7 @@ const Header = styled.header`
   height: 80px;
   position: relative;
 
-  background: ${props => props.theme.colors.white};
+  background: transparent;
   color: ${props => props.theme.colors.black};
 
   display: flex;
@@ -34,17 +34,6 @@ const Header = styled.header`
   }
 `;
 
-const Ad = styled.div`
-  display: flex;
-  background: ${props => props.theme.colors.primary};
-  color: white;
-  padding: 1rem;
-  justify-content: center;
-  & p {
-    text-align: center;
-  }
-`;
-
 const Logo = styled.div`
   position: relative;
   padding: 0;
@@ -52,19 +41,6 @@ const Logo = styled.div`
 `;
 const LogoLink = styled(NoStyleLink)`
   color: ${props => props.theme.colors.black};
-  letter-spacing: 2px;
-  font-size: 3.6rem;
-  padding: 0;
-  margin: 0;
-  font-family: 'Parlour-Regular';
-  text-decoration: none !important;
-
-  & span {
-    font-size: 6.1rem;
-    display: inline;
-    color: red;
-    font-family: 'Parlour-Regular';
-  }
 `;
 
 const NavContainer = styled.nav`
@@ -97,7 +73,7 @@ const CustomLink = styled(NoStyleLink)`
   }
 `;
 
-const Nav = () => {
+const NavWave = () => {
   const [mobileMenuOpen, setMobileMenu] = useState(false);
 
   const mobileMenuHandler = () => {
@@ -108,9 +84,7 @@ const Nav = () => {
     <>
       <Header>
         <Logo>
-          <LogoLink to="/">
-            <span>N</span>ew <span>B</span>arber
-          </LogoLink>
+          <LogoLink to="/">Chat Monkey</LogoLink>
         </Logo>
 
         <NavContainer>
@@ -124,13 +98,8 @@ const Nav = () => {
           <MobileMenu1 mobileMenuHandler={mobileMenuHandler} />
         ) : null}
       </Header>
-      <Ad>
-        <p>
-          List Your Barbershop here today and get up to 10X more visits or more!
-        </p>
-      </Ad>
     </>
   );
 };
 
-export default Nav;
+export default NavWave;
